@@ -11,14 +11,14 @@ export default defineConfig({
     rollupOptions: {
       // ライブラリにバンドルされるべきではない依存関係（vue）を外部化
       external: ['vue'],
+      // 外部化された依存関係のために UMD のビルドで使用するグローバル変数を提供
+      globals: {
+      vue: 'Vue',
+      },
       // scssのビルド - scss/以下の.scssをビルドする（_から始まるファイルは除く）
-      input: glob.sync(['src/scss/**/*.scss', '!**/_*']), 
+      input: glob.sync(['src/assets/scss/**/*.scss', '!**/_*']), 
       output: {
         assetFileNames: ({name}) => `${name?.replace('scss/', 'css/')}`,
-         // 外部化された依存関係のために UMD のビルドで使用するグローバル変数を提供
-        globals: {
-          vue: 'Vue',
-        },
       }
     }
   }
