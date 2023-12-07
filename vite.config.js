@@ -1,18 +1,26 @@
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import globule from 'globule';
-// import glob from 'fast-glob';
 
+// globuleでsrc以下のhtmlファイルを全て引っ張ってくる
 const htmlFiles = globule.find('src/**/*.html');
-// 無視したいファイルがあるとき第二引数に記載
-// {
-//   ignore : [
-//     'src/assets/_*.js'
-//   ]
-// }
 
 export default defineConfig({
-  plugins: [vue()],
+  plugins: [
+    vue(),
+    // html プラグインの設定
+    // {
+    //   name: 'static-html',
+    //   enforce: 'pre',
+    //   apply: 'build',
+    //   generateBundle(_options, bundle) {
+    //     const htmlContent = bundle[htmlFiles[0]].source;
+    //     // ここで必要な変換を行う
+    //     // 例: htmlContent を静的なHTMLに変換する処理
+          // 【input をhtmlContentに変更する？？？】
+    //   }
+    // }
+  ],
   root: 'src',
   build: {
     base: './', //相対パスでビルド
@@ -31,10 +39,10 @@ export default defineConfig({
         entryFileNames: `assets/js/[name].js`,
         chunkFileNames: `assets/js/[name].js`,
         assetFileNames: (assetInfo) => {
-          const {name} = assetInfo
+          const {name} = assetInfo;
           // if分で無理矢理ディレクトリ分け・・・
           if (/\.(jpe?g|png|gif|svg)$/.test(name ?? '')) {
-            return 'assets/images/[name][ext]';
+            return 'assets/images/[name].[ext]';
           }
           if (/\.(css)$/.test(name ?? '')) {
             return 'assets/css/[name].css';
@@ -45,14 +53,32 @@ export default defineConfig({
           return 'assets/[name].[ext]';
         }
       }
-      
-      // scssのビルド - scss/以下の.scssをビルドする（_から始まるファイルは除く）
-      // [
-      //   glob.sync(['src/assets/scss/**/*.scss', '!**/_*']),
-      // ],
-      // output: {
-      //   assetFileNames: ({name}) => `${name?.replace('scss/', 'css/')}`,
-      // }
     }
   }
 })
+
+// globuleで無視したいファイルがあるとき第二引数に記載
+// {
+//   ignore : [
+//     'src/assets/_*.js'
+//   ]
+// }
+
+// scssのビルド - scss/以下の.scssをビルドする（_から始まるファイルは除く）
+// import glob from 'fast-glob';
+
+// rollUpOptions内
+// input: [
+//   glob.sync(['src/assets/scss/**/*.scss', '!**/_*']),
+// ],
+// output: {
+//   assetFileNames: ({name}) => `${name?.replace('scss/', 'css/')}`,
+// }
+
+//   // コンポーネントごとに別の出力チャンクを生成する
+// rollUpOptions内
+// manualChunks(app) {
+//   if (app.includes('src/components')) {
+//     return `component-${app.slice(app.lastIndexOf('/') + 1, app.lastIndexOf('.'))}`;
+//   }
+// },
