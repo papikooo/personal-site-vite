@@ -8,18 +8,6 @@ const htmlFiles = globule.find('src/**/*.html');
 export default defineConfig({
   plugins: [
     vue(),
-    // html プラグインの設定
-    // {
-    //   name: 'static-html',
-    //   enforce: 'pre',
-    //   apply: 'build',
-    //   generateBundle(_options, bundle) {
-    //     const htmlContent = bundle[htmlFiles[0]].source;
-    //     // ここで必要な変換を行う
-    //     // 例: htmlContent を静的なHTMLに変換する処理
-          // 【input をhtmlContentに変更する？？？】
-    //   }
-    // }
   ],
   root: 'src',
   build: {
@@ -39,23 +27,56 @@ export default defineConfig({
         entryFileNames: `assets/js/[name].js`,
         chunkFileNames: `assets/js/[name].js`,
         assetFileNames: (assetInfo) => {
-          const {name} = assetInfo;
-          // if分で無理矢理ディレクトリ分け・・・
-          if (/\.(jpe?g|png|gif|svg)$/.test(name ?? '')) {
-            return 'assets/images/[name].[ext]';
+          let extType = assetInfo.name.split('.')[1];
+          //Webフォントファイルの振り分け
+          if (/ttf|otf|eot|woff|woff2/i.test(extType)) {
+            extType = 'fonts';
           }
-          if (/\.(css)$/.test(name ?? '')) {
-            return 'assets/css/[name].css';
+          if (/png|jpe?g|svg|gif|tiff|bmp|ico/i.test(extType)) {
+            extType = 'images';
           }
-          if (/\.(js)$/.test(name ?? '')) {
-            return 'assets/js/[name].js';
+          //ビルド時のCSS名を明記してコントロールする
+          if(extType === 'css') {
+            return `assets/css/style.css`;
           }
-          return 'assets/[name].[ext]';
-        }
+          return `assets/${extType}/[name][extname]`;
+        },
       }
     }
   }
 })
+
+
+
+// const cssFiles = globule.find('src/assets/scss/*.scss');
+
+
+// html プラグインの設定
+// {
+//   name: 'static-html',
+//   enforce: 'pre',
+//   apply: 'build',
+//   generateBundle(_options, bundle) {
+//     const htmlContent = bundle[htmlFiles[0]].source;
+//     // ここで必要な変換を行う
+//     // 例: htmlContent を静的なHTMLに変換する処理
+//           【input をhtmlContentに変更する？？？】
+//   }
+// }
+
+// assetsInfoでやってみたやつ
+// const {name} = assetInfo;
+// // ifで無理矢理ディレクトリ分け・・・
+// if (/\.(jpe?g|png|gif|svg)$/.test(name ?? '')) {
+//   return 'assets/images/[name].[ext]';
+// }
+// if (/\.(css)$/.test(name ?? '')) {
+//   return 'assets/css/[name].css';
+// }
+// if (/\.(js)$/.test(name ?? '')) {
+//   return 'assets/js/[name].js';
+// }
+// return 'assets/[name].[ext]';
 
 // globuleで無視したいファイルがあるとき第二引数に記載
 // {
