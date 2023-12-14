@@ -47,11 +47,16 @@ export default defineConfig({
 })
 
 
+// ------------メモ（試行して上手くいかなかったもの）------------
 
-// const cssFiles = globule.find('src/assets/scss/*.scss');
+// ▼ globuleで無視したいファイルがあるとき第二引数に記載
+// {
+//   ignore : [
+//     'src/assets/_*.js'
+//   ]
+// }
 
-
-// html プラグインの設定
+// ▼ html プラグインの設定
 // {
 //   name: 'static-html',
 //   enforce: 'pre',
@@ -64,7 +69,7 @@ export default defineConfig({
 //   }
 // }
 
-// assetsInfoでやってみたやつ
+// ▼ assetsInfoでやってみたやつ
 // const {name} = assetInfo;
 // // ifで無理矢理ディレクトリ分け・・・
 // if (/\.(jpe?g|png|gif|svg)$/.test(name ?? '')) {
@@ -78,23 +83,17 @@ export default defineConfig({
 // }
 // return 'assets/[name].[ext]';
 
-// globuleで無視したいファイルがあるとき第二引数に記載
-// {
-//   ignore : [
-//     'src/assets/_*.js'
-//   ]
-// }
-
-// scssのビルド - scss/以下の.scssをビルドする（_から始まるファイルは除く）
+// ▼ scssのビルド - scss/以下の.scssをビルドする（_から始まるファイルは除く）
 // import glob from 'fast-glob';
 
-// rollUpOptions内
+// ----- rollUpOptions内 -----
 // input: [
 //   glob.sync(['src/assets/scss/**/*.scss', '!**/_*']),
 // ],
 // output: {
 //   assetFileNames: ({name}) => `${name?.replace('scss/', 'css/')}`,
 // }
+// ---------------------------
 
 //   // コンポーネントごとに別の出力チャンクを生成する
 // rollUpOptions内
