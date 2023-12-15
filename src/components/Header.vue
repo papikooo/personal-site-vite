@@ -1,19 +1,19 @@
 <script setup>
 
 defineProps({
-  msg: String,
+  title: String,
 })
 
 </script>
 
-<template>
-  <h1>{{ msg }}</h1>
-  <h2>{{ msg }}</h2>
-
-  <div class="card">
-    <p>
-      テストテスト
-    </p>
-  </div>
+<template v-slot:header>
+  <nav class="header__inner">
+    <h1><a href="/">{{ title }}</a></h1>
+    <ul>
+      <li>Note</li>
+      <li>Works</li>
+      <li>Plan</li>
+    </ul>
+  </nav>
 </template>
 

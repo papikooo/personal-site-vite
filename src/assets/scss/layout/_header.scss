@@ -1,0 +1,48 @@
+@use '../global' as *;
+
+/* --------------------------------
+ * header
+ * -------------------------------- */
+
+.header__inner {
+  padding-top: rem(10);
+  padding-bottom: rem(10);
+  border-bottom: rem(5) solid var(--color-main);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--color-main-b);
+  color: #ffffff;
+
+  & a {
+    color: #ffffff;
+  }
+
+  & ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    & li {
+      margin: 0 rem(30);
+    };
+  }
+}
+
+
+// sp
+
+@include sp {
+
+  .header__inner {
+    display: block;
+
+    & img {
+      margin: 0 auto;
+    }
+  }
+
+  .header__about {
+    text-align: center;
+  }
+}

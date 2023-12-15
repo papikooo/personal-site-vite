@@ -1,0 +1,28 @@
+@use '../global' as *;
+
+/* --------------------------------
+ * title
+ * -------------------------------- */
+
+h2 {
+  font-size: rem(24);
+  line-height: 2.5;
+  text-decoration: underline rem(10) #99E5A5;
+  text-underline-offset: -0.1em;
+  text-decoration-skip-ink: none;
+}
+
+.p-under-line {
+  text-decoration: underline rem(5) #99E5A5;
+  text-underline-offset: -0.1em;
+  text-decoration-skip-ink: none;
+}
+
+@include sp {
+  h2 {
+    font-size: rem(18);
+    line-height: 2;
+    text-decoration: underline rem(8) #99E5A5;
+  }
+  
+}
