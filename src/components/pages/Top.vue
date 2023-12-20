@@ -5,7 +5,6 @@ defineProps({
 </script>
 
 <template>
-	<main>
-		<h2>これは見出しです</h2>
-	</main>
+	<h2>これはトップページです</h2>
+	<p>Hello World!</p>
 </template>

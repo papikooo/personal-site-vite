@@ -4,14 +4,19 @@
  * header
  * -------------------------------- */
 
+header {
+  padding-left: rem(20);
+  padding-right: rem(20);
+  border-bottom: rem(5) solid var(--color-main);
+  background-color: var(--color-main-b);
+}
+
 .header__inner {
   padding-top: rem(10);
   padding-bottom: rem(10);
-  border-bottom: rem(5) solid var(--color-main);
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  background-color: var(--color-main-b);
+  align-items: center;  
   color: #ffffff;
 
   & a {
