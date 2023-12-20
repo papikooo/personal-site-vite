@@ -1,15 +1,20 @@
-import { defineConfig } from 'vite';
-import vue from '@vitejs/plugin-vue';
-import globule from 'globule';
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import globule from 'globule'
 
 // globuleでsrc以下のhtmlファイルを全て引っ張ってくる
 const htmlFiles = globule.find('src/**/*.html');
 
 export default defineConfig({
-  plugins: [
-    vue(),
-  ],
+  // コンポーネント整理にあたり、相対パスでは参照できなくなる可能性もあるため
+  // エイリアス（~）をsrc直下に設定
+  plugins: [ vue() ],
   root: 'src',
+  resolve: {
+    alias: {
+      '@': '/components', // ルートからの相対パス
+    },
+  },
   build: {
     base: './', //相対パスでビルド
     outDir: '../dist', //出力場所の指定

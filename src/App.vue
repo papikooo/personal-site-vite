@@ -1,13 +1,10 @@
 <script setup>
-import Header from './components/Header.vue'
-import Footer from './components/Footer.vue'
+import Header from '@/basics/Header.vue'
+import Footer from '@/basics/Footer.vue'
 </script>
 
 <template>
   <Header title="Personal Site" />
-  <main>
-    <p>個人用サイト</p>
-  </main>
+  <router-view />
   <Footer title="Personal Site" />
-  
 </template>
