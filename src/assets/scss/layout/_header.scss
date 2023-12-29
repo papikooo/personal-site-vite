@@ -39,15 +39,4 @@ header {
 
 @include sp {
 
-  .header__inner {
-    display: block;
-
-    & img {
-      margin: 0 auto;
-    }
-  }
-
-  .header__about {
-    text-align: center;
-  }
 }
