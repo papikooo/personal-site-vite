@@ -1,0 +1,30 @@
+@use '../global' as *;
+
+/* --------------------------------
+ * main
+ * -------------------------------- */
+
+main {
+  text-align: center;
+}
+
+//  fv
+
+.top_fv img {
+  margin: 0 auto rem(50);
+  object-fit: cover;
+  width: 100vw;
+  min-height: rem(250);
+  z-index: 0;
+}
+
+
+// sp
+
+@include sp {
+
+  // fv
+
+  
+
+}

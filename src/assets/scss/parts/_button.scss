@@ -1,0 +1,26 @@
+@use '../global' as *;
+
+/* --------------------------------
+ * button
+ * -------------------------------- */
+
+button {
+  padding: rem(3) rem(25);
+  border-bottom: solid rem(5) var(--color-main);
+  border-right: solid rem(5) var(--color-main);
+  font-size: rem(14);
+  font-weight: bold;
+  letter-spacing: rem(2);
+  color: #ffffff;
+  background-color: var(--color-main-b);
+
+  &:hover {
+    box-shadow: 0 0 rem(5) var(--color-main);
+  }
+
+  &:active {
+    border-bottom: none;
+    border-right: none;
+  }
+}
+

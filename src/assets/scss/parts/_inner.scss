@@ -1,0 +1,32 @@
+@use '../global' as *;
+
+/* --------------------------------
+ * inner
+ * -------------------------------- */
+.inner {
+  margin: 0 auto;
+  padding-right: var(--pc-padding);
+  padding-left: var(--pc-padding);
+
+  @include tab {
+    padding-right: var(--tab-padding);
+    padding-left: var(--tab-padding);
+  }
+
+  @include sp {
+    padding-right: var(--sp-padding);
+    padding-left: var(--sp-padding);
+  }
+}
+
+.w1180 {
+  max-width: calc(1180px + var(--pc-padding) * 2);
+
+  @include tab {
+    max-width: calc(1180px + var(--tab-padding) * 2);
+  }
+
+  @include sp {
+    max-width: calc(1180px + var(--sp-padding) * 2);
+  }
+}

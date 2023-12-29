@@ -1,0 +1,43 @@
+@use '../global' as *;
+
+/* --------------------------------
+ * utility
+ * -------------------------------- */
+
+
+.u-pc {
+  display: block;
+}
+
+@include tab {
+  .u-pc {
+    display: none;
+  }
+}
+
+@include sp {
+  .u-pc {
+    display: none;
+  }
+}
+
+
+.u-pc_tab {
+  display: block;
+}
+
+@include sp {
+  .u-pc_tab {
+    display: none;
+  }
+}
+
+.u-sp {
+  display: none;
+}
+
+@include sp {
+  .u-sp {
+    display: block;
+  }
+}

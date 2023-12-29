@@ -1,0 +1,38 @@
+@use '../global' as *;
+
+/* --------------------------------
+ * base
+ * -------------------------------- */
+html *,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0 auto;
+  color: var(--color-text);
+  font-family: var(--font-base);
+  line-height: 2.5;
+}
+
+a:link,
+a:visited,
+a:hover,
+a:active {
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+
+@include sp {
+  body {
+    line-height: 2;
+  }
+}

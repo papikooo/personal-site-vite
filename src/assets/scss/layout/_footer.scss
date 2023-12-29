@@ -1,0 +1,28 @@
+@use '../global' as *;
+
+/* --------------------------------
+ * footer
+ * -------------------------------- */
+
+footer {
+  margin-top: rem(80);
+  border-top: rem(4) solid var(--color-main);
+  background-color: var(--color-main-b);
+  font-size: rem(12);
+  color: #ffffff;
+  line-height: 1.25rem;
+  text-align: center;
+}
+
+// tab
+
+@include tab {
+
+}
+
+
+// sp
+
+@include sp {
+
+}
