@@ -4,20 +4,25 @@
  * button
  * -------------------------------- */
 
-.p__tel a {
-  color: var(--color-accent);
-  font-size: rem(24);
+button {
+  padding: rem(3) rem(25);
+  border-bottom: solid rem(5) var(--color-main);
+  border-right: solid rem(5) var(--color-main);
+  border-radius: 25px;
+  font-size: rem(14);
   font-weight: bold;
+  letter-spacing: 0.2em;
+  color: #ffffff;
+  background-color: var(--color-main-b);
 
-  &::before {
-    content: "";
-    display: inline-block;
-    background-image: url(/assets/img/phone.svg);
-    background-repeat: no-repeat;
-    width: rem(24);
-    height: rem(25);
-    position: relative;
-    top: rem(4);
-    margin-right: rem(5);
+  &:hover {
+    text-shadow: 0 0 5px var(--color-main);
+    // box-shadow: 0 0 rem(5) var(--color-main);
+  }
+
+  &:active {
+    border-bottom: none;
+    border-right: none;
   }
 }
+

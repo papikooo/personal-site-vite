@@ -1,11 +1,11 @@
 <script setup>
 defineProps({
-  title: String,
+  footer_text: String,
 })
 </script>
 
 <template>
 
-<h2>{{ title }}</h2>
+<p>{{ footer_text }}</p>
 
 </template>

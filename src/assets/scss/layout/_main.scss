@@ -4,15 +4,18 @@
  * main
  * -------------------------------- */
 
+main {
+  text-align: center;
+}
+
 //  fv
 
 .top_fv img {
-  position: relative;
+  margin: 0 auto rem(50);
   object-fit: cover;
-  max-width: rem(1400);
+  width: 100vw;
   min-height: rem(250);
   z-index: 0;
-  margin: 0 auto;
 }
 
 

@@ -5,22 +5,26 @@
  * -------------------------------- */
 
 header {
-  padding-left: rem(20);
-  padding-right: rem(20);
-  border-bottom: rem(5) solid var(--color-main);
+  border-bottom: rem(10) solid var(--color-main-b);
   background-color: var(--color-main-b);
 }
 
 .header__inner {
-  padding-top: rem(10);
-  padding-bottom: rem(10);
+  padding: rem(8) rem(20) rem(0) rem(20);
+  border-bottom: rem(4) solid var(--color-main);
   display: flex;
   justify-content: space-between;
   align-items: center;  
   color: #ffffff;
+  letter-spacing: 0.2em;
 
   & a {
     color: #ffffff;
+
+    &:hover {
+      text-shadow: 0 0 5px var(--color-main);
+    }
+
   }
 
   & ul {

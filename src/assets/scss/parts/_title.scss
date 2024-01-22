@@ -4,25 +4,20 @@
  * title
  * -------------------------------- */
 
-h2 {
-  font-size: rem(24);
-  line-height: 2.5;
-  text-decoration: underline rem(10) #99E5A5;
-  text-underline-offset: -0.1em;
-  text-decoration-skip-ink: none;
+h1 {
+  font-weight: bold;
 }
 
-.p-under-line {
-  text-decoration: underline rem(5) #99E5A5;
-  text-underline-offset: -0.1em;
-  text-decoration-skip-ink: none;
+h2 {
+  color: var(--color-main);
+  font-size: rem(40);
+  font-weight: bold;
+  letter-spacing: rem(5);
 }
 
 @include sp {
   h2 {
-    font-size: rem(18);
-    line-height: 2;
-    text-decoration: underline rem(8) #99E5A5;
+    font-size: rem(20);
   }
   
 }

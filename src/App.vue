@@ -11,6 +11,6 @@ import Footer from '@/basics/Footer.vue'
     <router-view />
   </main>
   <footer>
-    <Footer title="Personal Site" />
+    <Footer footer_text="&copy;nm" />
   </footer>
 </template>
