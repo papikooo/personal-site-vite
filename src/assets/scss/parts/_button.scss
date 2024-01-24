@@ -5,6 +5,8 @@
  * -------------------------------- */
 
 button {
+  margin-top: rem(10);
+  margin-bottom: rem(10);
   padding: rem(3) rem(25);
   border-bottom: solid rem(5) var(--color-main);
   border-right: solid rem(5) var(--color-main);

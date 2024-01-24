@@ -1,0 +1,661 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&family=Raleway&display=swap");
+/* --------------------------------
+ * 関数管理
+ * -------------------------------- */
+/* px→rem ----------- */
+/* --------------------------------
+ * 変数管理
+ * -------------------------------- */
+:root {
+  /* 色 ----------- */
+  --color-main: #aacf53;
+  --color-main-b: #333631;
+  --color-sub: #546629;
+  --color-accent: #cf7853;
+  --color-bg: #D6E9CA;
+  --color-text: #333631;
+  /* フォント ----------- */
+  --font-base: "Noto Sans JP", "Raleway",
+  	"游ゴシック体", YuGothic, "游ゴシック Medium", "Yu Gothic Medium",
+  	"游ゴシック", "Yu Gothic", sans-serif;
+  --font-size: rem(16);
+  /* 余白 ----------- */
+  --pc-padding: 20px;
+  --tab-padding: 20px;
+  --sp-padding: 10px;
+  /* 幅 ----------- */
+  --w-container: 980px;
+}
+
+/* --------------------------------
+ *  レスポンシブ定義
+ * -------------------------------- */
+/* ブレイクポイント ----------- */
+/* PC（～以上） */
+/* タブレット（～以下） */
+/* スマホ（～以下） */
+/* --------------------------------
+ * メディアクエリ
+ * -------------------------------- */
+/* PC */
+/* タブレット */
+/* スマホ */
+/*
+下記のように呼び出す
+@include sp {
+
+}
+*/
+/*! destyle.css v4.0.0 | MIT License | https://github.com/nicolas-cusan/destyle.css */
+/* Reset box-model and set borders */
+/* ============================================ */
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  border-style: solid;
+  border-width: 0;
+}
+
+/* Document */
+/* ============================================ */
+/**
+ * 1. Correct the line height in all browsers.
+ * 2. Prevent adjustments of font size after orientation changes in iOS.
+ * 3. Remove gray overlay on links for iOS.
+ */
+html {
+  line-height: 1.15; /* 1 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+  -webkit-tap-highlight-color: transparent; /* 3*/
+}
+
+/* Sections */
+/* ============================================ */
+/**
+ * Remove the margin in all browsers.
+ */
+body {
+  margin: 0;
+}
+
+/**
+ * Render the `main` element consistently in IE.
+ */
+main {
+  display: block;
+}
+
+/* Vertical rhythm */
+/* ============================================ */
+p,
+table,
+blockquote,
+address,
+pre,
+iframe,
+form,
+figure,
+dl {
+  margin: 0;
+}
+
+/* Headings */
+/* ============================================ */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+  margin: 0;
+}
+
+/* Lists (enumeration) */
+/* ============================================ */
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Lists (definition) */
+/* ============================================ */
+dt {
+  font-weight: bold;
+}
+
+dd {
+  margin-left: 0;
+}
+
+/* Grouping content */
+/* ============================================ */
+/**
+ * 1. Add the correct box sizing in Firefox.
+ * 2. Show the overflow in Edge and IE.
+ */
+hr {
+  box-sizing: content-box; /* 1 */
+  height: 0; /* 1 */
+  overflow: visible; /* 2 */
+  border-top-width: 1px;
+  margin: 0;
+  clear: both;
+  color: inherit;
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd `em` font sizing in all browsers.
+ */
+pre {
+  font-family: monospace, monospace; /* 1 */
+  font-size: inherit; /* 2 */
+}
+
+address {
+  font-style: inherit;
+}
+
+/* Text-level semantics */
+/* ============================================ */
+/**
+ * Remove the gray background on active links in IE 10.
+ */
+a {
+  background-color: transparent;
+  text-decoration: none;
+  color: inherit;
+}
+
+/**
+ * 1. Remove the bottom border in Chrome 57-
+ * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+ */
+abbr[title] {
+  -webkit-text-decoration: underline dotted;
+          text-decoration: underline dotted; /* 2 */
+}
+
+/**
+ * Add the correct font weight in Chrome, Edge, and Safari.
+ */
+b,
+strong {
+  font-weight: bolder;
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd `em` font sizing in all browsers.
+ */
+code,
+kbd,
+samp {
+  font-family: monospace, monospace; /* 1 */
+  font-size: inherit; /* 2 */
+}
+
+/**
+ * Add the correct font size in all browsers.
+ */
+small {
+  font-size: 80%;
+}
+
+/**
+ * Prevent `sub` and `sup` elements from affecting the line height in
+ * all browsers.
+ */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+/* Replaced content */
+/* ============================================ */
+/**
+ * Prevent vertical alignment issues.
+ */
+svg,
+img,
+embed,
+object,
+iframe {
+  vertical-align: bottom;
+}
+
+/* Forms */
+/* ============================================ */
+/**
+ * Reset form fields to make them styleable.
+ * 1. Make form elements stylable across systems iOS especially.
+ * 2. Inherit text-transform from parent.
+ */
+button,
+input,
+optgroup,
+select,
+textarea {
+  -webkit-appearance: none; /* 1 */
+  -moz-appearance: none;
+       appearance: none;
+  vertical-align: middle;
+  color: inherit;
+  font: inherit;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  border-radius: 0;
+  text-align: inherit;
+  text-transform: inherit; /* 2 */
+}
+
+/**
+ * Correct cursors for clickable elements.
+ */
+button,
+[type=button],
+[type=reset],
+[type=submit] {
+  cursor: pointer;
+}
+
+button:disabled,
+[type=button]:disabled,
+[type=reset]:disabled,
+[type=submit]:disabled {
+  cursor: default;
+}
+
+/**
+ * Improve outlines for Firefox and unify style with input elements & buttons.
+ */
+:-moz-focusring {
+  outline: auto;
+}
+
+select:disabled {
+  opacity: inherit;
+}
+
+/**
+ * Remove padding
+ */
+option {
+  padding: 0;
+}
+
+/**
+ * Reset to invisible
+ */
+fieldset {
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+
+legend {
+  padding: 0;
+}
+
+/**
+ * Add the correct vertical alignment in Chrome, Firefox, and Opera.
+ */
+progress {
+  vertical-align: baseline;
+}
+
+/**
+ * Remove the default vertical scrollbar in IE 10+.
+ */
+textarea {
+  overflow: auto;
+}
+
+/**
+ * Correct the cursor style of increment and decrement buttons in Chrome.
+ */
+[type=number]::-webkit-inner-spin-button,
+[type=number]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/**
+ * Correct the outline style in Safari.
+ */
+[type=search] {
+  outline-offset: -2px; /* 1 */
+}
+
+/**
+ * Remove the inner padding in Chrome and Safari on macOS.
+ */
+[type=search]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/**
+ * 1. Correct the inability to style clickable types in iOS and Safari.
+ * 2. Fix font inheritance.
+ */
+::-webkit-file-upload-button {
+  -webkit-appearance: button; /* 1 */
+  font: inherit; /* 2 */
+}
+
+/**
+ * Fix appearance for Firefox
+ */
+[type=number] {
+  -moz-appearance: textfield;
+}
+
+/**
+ * Clickable labels
+ */
+label[for] {
+  cursor: pointer;
+}
+
+/* Interactive */
+/* ============================================ */
+/*
+ * Add the correct display in Edge, IE 10+, and Firefox.
+ */
+details {
+  display: block;
+}
+
+/*
+ * Add the correct display in all browsers.
+ */
+summary {
+  display: list-item;
+}
+
+/*
+ * Remove outline for editable content.
+ */
+[contenteditable]:focus {
+  outline: auto;
+}
+
+/* Tables */
+/* ============================================ */
+/**
+1. Correct table border color inheritance in all Chrome and Safari.
+*/
+table {
+  border-color: inherit; /* 1 */
+  border-collapse: collapse;
+}
+
+caption {
+  text-align: left;
+}
+
+td,
+th {
+  vertical-align: top;
+  padding: 0;
+}
+
+th {
+  text-align: left;
+  font-weight: bold;
+}
+
+/* --------------------------------
+ * base
+ * -------------------------------- */
+html *,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0 auto;
+  color: var(--color-text);
+  font-family: var(--font-base);
+  line-height: 2.5;
+}
+
+a:link,
+a:visited,
+a:hover,
+a:active {
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+@media screen and (max-width: 699px) {
+  body {
+    line-height: 2;
+  }
+}
+/* --------------------------------
+ * inner
+ * -------------------------------- */
+.inner {
+  margin: 0 auto;
+  padding-right: var(--pc-padding);
+  padding-left: var(--pc-padding);
+}
+@media screen and (max-width: 1229px) {
+  .inner {
+    padding-right: var(--tab-padding);
+    padding-left: var(--tab-padding);
+  }
+}
+@media screen and (max-width: 699px) {
+  .inner {
+    padding-right: var(--sp-padding);
+    padding-left: var(--sp-padding);
+  }
+}
+
+.w1180 {
+  max-width: calc(1180px + var(--pc-padding) * 2);
+}
+@media screen and (max-width: 1229px) {
+  .w1180 {
+    max-width: calc(1180px + var(--tab-padding) * 2);
+  }
+}
+@media screen and (max-width: 699px) {
+  .w1180 {
+    max-width: calc(1180px + var(--sp-padding) * 2);
+  }
+}
+
+/* --------------------------------
+ * title
+ * -------------------------------- */
+h1 {
+  font-weight: bold;
+}
+
+h2 {
+  color: var(--color-main);
+  font-size: 2.5rem;
+  font-weight: bold;
+  letter-spacing: 0.31rem;
+}
+
+@media screen and (max-width: 699px) {
+  h2 {
+    font-size: 1.25rem;
+  }
+}
+/* --------------------------------
+ * button
+ * -------------------------------- */
+button {
+  margin-top: 0.63rem;
+  margin-bottom: 0.63rem;
+  padding: 0.19rem 1.56rem;
+  border-bottom: solid 0.31rem var(--color-main);
+  border-right: solid 0.31rem var(--color-main);
+  border-radius: 25px;
+  font-size: 0.88rem;
+  font-weight: bold;
+  letter-spacing: 0.2em;
+  color: #ffffff;
+  background-color: var(--color-main-b);
+}
+button:hover {
+  text-shadow: 0 0 5px var(--color-main);
+}
+button:active {
+  border-bottom: none;
+  border-right: none;
+}
+
+/* --------------------------------
+ * card
+ * -------------------------------- */
+/* --------------------------------
+ * header
+ * -------------------------------- */
+header {
+  border-bottom: 0.63rem solid var(--color-main-b);
+  background-color: var(--color-main-b);
+}
+
+.header__inner {
+  padding: 0.5rem 3.13rem 0rem;
+  border-bottom: 0.25rem solid var(--color-main);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #ffffff;
+  letter-spacing: 0.2em;
+}
+.header__inner a {
+  color: #ffffff;
+}
+.header__inner a:hover {
+  text-shadow: 0 0 5px var(--color-main);
+}
+.header__inner ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header__inner ul li {
+  margin: 0 1.88rem;
+}
+
+/* --------------------------------
+ * footer
+ * -------------------------------- */
+footer {
+  margin-top: 5rem;
+  border-top: 0.25rem solid var(--color-main);
+  background-color: var(--color-main-b);
+  font-size: 0.75rem;
+  color: #ffffff;
+  line-height: 1.25rem;
+  text-align: center;
+}
+
+/* --------------------------------
+ * main
+ * -------------------------------- */
+main {
+  text-align: center;
+}
+
+.top_fv img {
+  margin: 0 auto 3.13rem;
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 100vw;
+  min-height: 15.63rem;
+  z-index: 0;
+}
+
+/* --------------------------------
+ * hamburger
+ * -------------------------------- */
+/* --------------------------------
+ * articles
+ * -------------------------------- */
+/* --------------------------------
+ * contact
+ * -------------------------------- */
+/* --------------------------------
+ * utility
+ * -------------------------------- */
+.u-pc {
+  display: block;
+}
+
+@media screen and (max-width: 1229px) {
+  .u-pc {
+    display: none;
+  }
+}
+@media screen and (max-width: 699px) {
+  .u-pc {
+    display: none;
+  }
+}
+.u-pc_tab {
+  display: block;
+}
+
+@media screen and (max-width: 699px) {
+  .u-pc_tab {
+    display: none;
+  }
+}
+.u-sp {
+  display: none;
+}
+
+@media screen and (max-width: 699px) {
+  .u-sp {
+    display: block;
+  }
+}
+/* --------------------------------
+ * base
+ * -------------------------------- */
+/* --------------------------------
+ * parts
+ * -------------------------------- */
+/* --------------------------------
+ * layout
+ * -------------------------------- */
+/* --------------------------------
+ * project
+ * -------------------------------- */
+/* --------------------------------
+ * utility
+ * -------------------------------- */
+/*# sourceMappingURL=main.css.map */

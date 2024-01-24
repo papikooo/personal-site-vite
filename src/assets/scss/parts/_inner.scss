@@ -4,6 +4,7 @@
  * inner
  * -------------------------------- */
 .inner {
+  width: var(--w-container);
   margin: 0 auto;
   padding-right: var(--pc-padding);
   padding-left: var(--pc-padding);

@@ -1,0 +1,26 @@
+@use '../global' as *;
+
+/* --------------------------------
+ * card
+ * -------------------------------- */
+
+.card_area {
+  margin-top: rem(20);
+  margin-bottom: rem(20);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.card {
+  width: 200px;
+  height: 200px;
+  border-radius: 100px;
+  background-color: var(--color-accent);
+  color: #ffffff;
+
+  & p, & a {
+    color: #ffffff;
+  }
+}
