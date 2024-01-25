@@ -461,6 +461,7 @@ img {
  * inner
  * -------------------------------- */
 .inner {
+  width: var(--w-container);
   margin: 0 auto;
   padding-right: var(--pc-padding);
   padding-left: var(--pc-padding);
@@ -538,6 +539,26 @@ button:active {
 /* --------------------------------
  * card
  * -------------------------------- */
+.card_area {
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.card {
+  width: 200px;
+  height: 200px;
+  border-radius: 100px;
+  background-color: var(--color-accent);
+  color: #ffffff;
+}
+.card p, .card a {
+  color: #ffffff;
+}
+
 /* --------------------------------
  * header
  * -------------------------------- */

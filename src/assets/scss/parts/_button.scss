@@ -19,6 +19,7 @@ button {
 
   &:hover {
     text-shadow: 0 0 5px var(--color-main);
+    transition: all 0.3s;
     // box-shadow: 0 0 rem(5) var(--color-main);
   }
 

@@ -23,6 +23,7 @@ header {
 
     &:hover {
       text-shadow: 0 0 5px var(--color-main);
+      transition: all 0.3s;
     }
 
   }

@@ -1,14 +1,8 @@
 <template>
-  <h2>Notes</h2>
-  <div class="card_area">
-    <router-link to="/article">
-      <article v-for="blog in blogs" :key="blog.id" class="card_box">
-        <img src="/assets/images/common/main_dummy.png" alt="">
-        <div class="card_text">
-          <h3>{{ blog.title }}</h3>
-        </div>
-      </article>
-    </router-link>
+  <div class="">
+    <article v-for="blog in blogs" :key="blog.id">
+      <h2>{{ blog.title }}</h2>
+    </article>
   </div>
 </template>
 
@@ -32,9 +26,9 @@ export default {
       client.get({
         endpoint: 'notes'
       })
-        .then((res) => {
-          this.blogs = res.contents
-        })
+      .then((res) => {
+        this.blogs = res.contents
+      })
     }
   }
 }

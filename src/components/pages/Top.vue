@@ -10,13 +10,14 @@ import Card from '@/components/Card.vue'
 
 <template>
 	<div class="top_fv">
-    <img src="/assets/images/common/fv_dummy.jpg" alt="">
+		<img src="/assets/images/common/fv_dummy.jpg" alt="">
 	</div>
 	<div class="inner">
 		<h2>Notes</h2>
-		<p>Hello World!</p>
+		<p>備忘録</p>
 		<div class="card_area">
-			<Card card_text="テスト"/>
+			<Card />
+			<Card />
 		</div>
 		<router-link to="/notes"><Button button_text="and&nbsp;more..." /></router-link>
 	</div>
