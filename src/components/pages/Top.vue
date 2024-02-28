@@ -1,6 +1,6 @@
 <script setup>
-import Button from '@/components/Button.vue'
-import Card from '@/components/Card.vue'
+import Button from '@/components/components/Button.vue'
+import Card from '@/components/components/Card.vue'
 
 // defineProps({
 // 	title: String,
@@ -17,7 +17,6 @@ import Card from '@/components/Card.vue'
 		<p>備忘録</p>
 		<div class="card_area">
 			<Card />
-			<Card />
 		</div>
 		<router-link to="/notes"><Button button_text="and&nbsp;more..." /></router-link>
 	</div>
@@ -27,6 +26,6 @@ import Card from '@/components/Card.vue'
 	</div>
 	<div class="inner">
 		<h2>Plan</h2>
-		<router-link to="/plan"><Button button_text="and&nbsp;more..." /></router-link>
+		<router-link to="/plans"><Button button_text="and&nbsp;more..." /></router-link>
 	</div>
 </template>

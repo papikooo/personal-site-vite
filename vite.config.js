@@ -1,9 +1,14 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import globule from 'globule'
+import { resolve } from 'path'
+import dotenv from 'dotenv'
 
 // globuleでsrc以下のhtmlファイルを全て引っ張ってくる
 const htmlFiles = globule.find('src/**/*.html');
+
+// dotenvパッケージを使用して.envファイルを読み込む
+dotenv.config();
 
 export default defineConfig({
   // コンポーネント整理にあたり、相対パスでは参照できなくなる可能性もあるため
@@ -12,7 +17,8 @@ export default defineConfig({
   root: 'src',
   resolve: {
     alias: {
-      '@': '/components', // ルートからの相対パス
+      '@': resolve(__dirname, 'src'), // ルートからの相対パス
+      '/@env/': resolve(__dirname, '../../')
     },
   },
   build: {

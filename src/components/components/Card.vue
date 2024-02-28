@@ -1,17 +1,29 @@
 <template>
-  <router-link to="/article">
-    <article v-for="blog in blogs" :key="blog.id" class="card_box">
-      <img src="/assets/images/common/main_dummy.png" alt="">
+  <article v-for="blog in blogs" :key="blog.id" class="card_box">
+    <router-link to="/notes/{ name: 'Article', params: { id: blog.id } }">
+      <img :src="blog.eyecatch?.url" alt="">
       <div class="card_text">
         <h3>{{ blog.title }}</h3>
       </div>
-    </article>
-  </router-link>
+    </router-link>
+  </article>
 </template>
 
 <script>
 import { createClient } from 'microcms-js-sdk'
-const client = createClient({ serviceDomain: 'ch1988npen', apiKey: '0DWMpqw4zQlkVFpjFLwUFKS2ez9ADRv6ltra' })
+
+const aaa = import.meta.env.VITE_KEY1
+console.log(aaa)
+const serviceDomain = import.meta.env.VITE_APP_MICROCMS_SERVICE_DOMAIN
+
+console.log("serviceDomain:", serviceDomain);
+
+
+// const client = createClient({
+//   serviceDomain: import.meta.env.VITE_APP_MICROCMS_SERVICE_DOMAIN,
+//   apiKey: import.meta.env.VITE_APP_MICROCMS_API_KEY
+// });
+
 
 export default {
   name: 'BlogComponent',

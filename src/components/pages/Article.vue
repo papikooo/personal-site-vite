@@ -1,14 +1,20 @@
 <template>
   <div class="">
-    <article v-for="blog in blogs" :key="blog.id">
-      <h2>{{ blog.title }}</h2>
-    </article>
+    <h2>{{ blog.title }}</h2>
+    <span>{{ blog.category }}</span>
+    <div>
+      {{ blog.content }}
+    </div>
   </div>
 </template>
 
 <script>
 import { createClient } from 'microcms-js-sdk'
-const client = createClient({ serviceDomain: 'ch1988npen', apiKey: '0DWMpqw4zQlkVFpjFLwUFKS2ez9ADRv6ltra' })
+
+const client = createClient({
+  serviceDomain: import.meta.env.VITE_APP_MICROCMS_SERVICE_DOMAIN,
+  apiKey: import.meta.env.VITE_APP_MICROCMS_API_KEY
+});
 
 export default {
   name: 'BlogComponent',
