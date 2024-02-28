@@ -1,6 +1,6 @@
 <script setup>
-import Button from '@/components/components/Button.vue'
-import Card from '@/components/components/Card.vue'
+import Button from '@components/components/Button.vue'
+import Card from '@components/components/Card.vue'
 
 // defineProps({
 // 	title: String,
