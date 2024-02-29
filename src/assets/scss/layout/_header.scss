@@ -10,19 +10,20 @@ header {
 }
 
 .header__inner {
-  padding: rem(8) rem(20) rem(0) rem(20);
+  padding: rem(8) rem(50) rem(0);
   border-bottom: rem(4) solid var(--color-main);
   display: flex;
   justify-content: space-between;
   align-items: center;  
   color: #ffffff;
-  letter-spacing: rem(2.5);
+  letter-spacing: 0.2em;
 
   & a {
     color: #ffffff;
 
     &:hover {
-      text-shadow: 0 0 rem(5) var(--color-main);
+      text-shadow: 0 0 5px var(--color-main);
+      transition: all 0.3s;
     }
 
   }

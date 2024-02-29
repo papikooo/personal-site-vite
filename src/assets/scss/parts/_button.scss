@@ -5,17 +5,22 @@
  * -------------------------------- */
 
 button {
+  margin-top: rem(10);
+  margin-bottom: rem(10);
   padding: rem(3) rem(25);
   border-bottom: solid rem(5) var(--color-main);
   border-right: solid rem(5) var(--color-main);
+  border-radius: 25px;
   font-size: rem(14);
   font-weight: bold;
-  letter-spacing: rem(2);
+  letter-spacing: 0.2em;
   color: #ffffff;
   background-color: var(--color-main-b);
 
   &:hover {
-    box-shadow: 0 0 rem(5) var(--color-main);
+    text-shadow: 0 0 5px var(--color-main);
+    transition: all 0.3s;
+    // box-shadow: 0 0 rem(5) var(--color-main);
   }
 
   &:active {

@@ -1,0 +1,39 @@
+@use '../global' as *;
+
+/* --------------------------------
+ * card
+ * -------------------------------- */
+
+.card_area {
+  margin-top: rem(30);
+  margin-bottom: rem(40);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.card_box {
+  width: 250px;
+  min-height: 250px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.35);
+  text-align: left;
+
+  &:hover {
+    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.35);
+    transition: all 0.3s;
+  }
+
+  // 後で消す？？
+  & img {
+    min-width: 100%;
+    max-height: 132px;
+    object-fit: cover;
+  }
+}
+
+.card_text {
+  padding: rem(10) rem(20);
+  font-size: rem(14);
+  line-height: 1.5em;
+}

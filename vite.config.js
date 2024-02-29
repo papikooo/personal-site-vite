@@ -1,9 +1,20 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import globule from 'globule'
+// import { resolve } from 'path'
+// import dotenv from 'dotenv'
 
 // globuleでsrc以下のhtmlファイルを全て引っ張ってくる
 const htmlFiles = globule.find('src/**/*.html');
+import { readFileSync } from 'fs';
+import { resolve } from 'path';
+
+const envLocalPath = resolve(__dirname, '.env.local');
+const envLocalContent = readFileSync(envLocalPath, 'utf-8');
+console.log('Contents of .env.local file:', envLocalContent);
+
+// dotenvパッケージを使用して.envファイルを読み込む
+// dotenv.config();
 
 export default defineConfig({
   // コンポーネント整理にあたり、相対パスでは参照できなくなる可能性もあるため
@@ -12,11 +23,13 @@ export default defineConfig({
   root: 'src',
   resolve: {
     alias: {
-      '@': '/components', // ルートからの相対パス
+      '@': '/src', // ルートからの相対パス
+      // '/@env/': resolve('./') , //ルート（src）からenvファイルへのパス
+      '@components': '/components'
     },
   },
   build: {
-    base: './', //相対パスでビルド
+    base: '/src', //相対パスでビルド
     outDir: '../dist', //出力場所の指定
     emptyOutDir: true,
     rollupOptions: {

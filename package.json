@@ -9,6 +9,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "dotenv": "^16.4.5",
+    "microcms-js-sdk": "^2.7.0",
     "vue": "^3.3.4",
     "vue-router": "^4.2.5"
   },
