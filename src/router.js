@@ -1,9 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Top from '@components/pages/Top.vue'
-import Notes from '@components/pages/Notes.vue'
-import Works from '@components/pages/Works.vue'
-import Plan from '@components/pages/Plan.vue'
-import Article from '@components/pages/Article.vue'
+import Top from '@c/pages/Top.vue'
+import Notes from '@c/pages/Notes.vue'
+import Works from '@c/pages/Works.vue'
+import Plan from '@c/pages/Plan.vue'
+import Article from '@c/pages/Article.vue'
 
 const routes = [
 	{ path: '/', name: 'Top', component: Top },

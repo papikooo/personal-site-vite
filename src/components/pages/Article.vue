@@ -1,14 +1,14 @@
 <template>
-  <!-- <div class="">
+  <div class="">
     <h2>{{ blog.title }}</h2>
     <span>{{ blog.category }}</span>
     <div>
       {{ blog.content }}
     </div>
-  </div> -->
+  </div>
 </template>
 
-<!-- <script>
+<script>
 import { createClient } from 'microcms-js-sdk'
 
 const client = createClient({
@@ -38,4 +38,4 @@ export default {
     }
   }
 }
-</script> -->
+</script>
