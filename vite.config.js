@@ -13,8 +13,8 @@ export default defineConfig({
   envDir: '../', // .env.localファイルの場所（ルート（src）からの相対パス）
   resolve: {
     alias: {
-      '@': '/src', // ルートからの相対パス
-      '@c': '/components'
+      '@': './src', // ルートからの相対パス
+      '@c': './src/components'
     },
   },
   build: {
