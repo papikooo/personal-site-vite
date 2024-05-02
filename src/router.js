@@ -8,7 +8,7 @@ import Plans from '@c/pages/Plans.vue'
 const routes = [
 	{ path: '/', name: 'Top', component: Top },
 	{ path: '/notes', name: 'Notes', component: Notes },
-	{ path: '/notes/:id', name: 'NoteDetail', component: NoteDetail },
+	{ path: '/notes/detail', name: 'NoteDetail', component: NoteDetail },
 	{ path: '/works', name: 'Works', component: Works },
 	{ path: '/plans', name: 'Plans', component: Plans },
 ]

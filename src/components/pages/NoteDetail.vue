@@ -1,10 +1,6 @@
 <template>
   <div class="">
-    <h2>{{ blog.title }}</h2>
-    <span>{{ blog.category }}</span>
-    <div>
-      {{ blog.content }}
-    </div>
+    <p>test</p>
   </div>
 </template>
 
@@ -31,8 +27,7 @@ export default {
     // getPosts
     getPosts() {
       client.get({
-        endpoint: 'notes',
-        // contentID: '{{blog.id}}'
+        endpoint: 'notes'
       })
       .then((res) => {
         this.blogs = res.contents

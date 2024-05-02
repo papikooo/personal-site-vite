@@ -1,6 +1,6 @@
 <template>
   <article v-for="blog in blogs" :key="blog.id" class="card_box">
-    <router-link to="/notes/id:{{blog.id}}">
+    <router-link to="/notes/detail">
       <img :src="blog.eyecatch?.url" alt="">
       <div class="card_text">
         <h3>{{ blog.title }}</h3>
