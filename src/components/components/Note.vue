@@ -1,6 +1,6 @@
 <template>
   <article v-for="blog in blogs" :key="blog.id" class="card_box">
-    <router-link to="/notes/detail">
+    <router-link :to="{ name: 'NoteDetail', params: { blogId: blog.id } }">
       <img :src="blog.eyecatch?.url" alt="">
       <div class="card_text">
         <h3>{{ blog.title }}</h3>
@@ -11,13 +11,7 @@
 </template>
 
 <script>
-// SDKの初期化（microCMS）
-import { createClient } from 'microcms-js-sdk'
-
-const client = createClient({
-	serviceDomain: import.meta.env.VITE_APP_MICROCMS_SERVICE_DOMAIN,
-	apiKey: import.meta.env.VITE_APP_MICROCMS_API_KEY
-});
+import { client } from '@/libs/microcms.js'
 
 export default {
   name: 'BlogComponent',
@@ -42,7 +36,3 @@ export default {
   }
 }
 </script>
-
-<!-- 将来的に -->
-<!-- 変数で持ってきたリンクでリンクさせたい
-（これを使いまわせるようにしたい） -->

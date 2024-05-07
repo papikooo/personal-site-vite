@@ -1,10 +1,10 @@
 <script setup>
-  import Card from '@c/components/Card.vue'
+  import Note from '@c/components/Note.vue'
 </script>
 
 <template>
   <h2>Notes</h2>
   <div class="card_area">
-		<Card />
+		<Note />
 	</div>
 </template>

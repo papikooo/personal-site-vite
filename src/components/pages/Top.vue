@@ -1,6 +1,6 @@
 <script setup>
 import Button from '@c/components/Button.vue'
-import Card from '@c/components/Card.vue'
+import Note from '@c/components/Note.vue'
 
 // defineProps({
 // 	title: String,
@@ -16,7 +16,7 @@ import Card from '@c/components/Card.vue'
 		<h2>Notes</h2>
 		<p>備忘録</p>
 		<div class="card_area">
-			<Card />
+			<Note />
 		</div>
 		<router-link to="/notes"><Button button_text="and&nbsp;more..." /></router-link>
 	</div>

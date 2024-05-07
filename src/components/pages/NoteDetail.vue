@@ -1,37 +1,40 @@
 <template>
-  <div class="">
-    <p>test</p>
+  <div>
+    <h2>詳細ページ</h2>
+    <div class="blog-detail">
+      <h3>{{ blog.title }}</h3>
+      <img :src="blog.eyecatch?.url" alt="">
+      <div v-html="blog.content" />
+    </div>
   </div>
 </template>
 
 <script>
-// SDKの初期化（microCMS）
-import { createClient } from 'microcms-js-sdk'
-
-const client = createClient({
-	serviceDomain: import.meta.env.VITE_APP_MICROCMS_SERVICE_DOMAIN,
-	apiKey: import.meta.env.VITE_APP_MICROCMS_API_KEY
-});
+import { client } from '@/libs/microcms.js'
 
 export default {
-  name: 'BlogComponent',
+  name: 'NoteDetail',
   data() {
     return {
-      blogs: []
+      blog: {}
     }
   },
   mounted() {
-    this.getPosts()
+    this.getPost()
   },
   methods: {
-    // getPosts
-    getPosts() {
-      client.get({
-        endpoint: 'notes'
-      })
-      .then((res) => {
-        this.blogs = res.contents
-      })
+    async getPost() {
+      try {
+        const blogId = this.$route.params.blogId
+        const response = await client.get({
+          endpoint: 'notes',
+          contentId: blogId
+        })
+        this.blog = response
+      } catch (error) {
+        console.error('エラーが発生しました', error)
+        // エラーハンドリングのロジックを追加
+      }
     }
   }
 }
