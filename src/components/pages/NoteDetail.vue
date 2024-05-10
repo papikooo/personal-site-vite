@@ -1,12 +1,9 @@
 <template>
-  <div>
-    <h2>詳細ページ</h2>
-    <div class="blog-detail">
-      <h3>{{ blog.title }}</h3>
-      <img :src="blog.eyecatch?.url" alt="">
-      <div v-html="blog.content" />
-    </div>
-  </div>
+  <article class="note_detail">
+    <h2>{{ blog.title }}</h2>
+    <img :src="blog.eyecatch?.url" alt="">
+    <div v-html="blog.content" />
+  </article>
 </template>
 
 <script>
@@ -33,7 +30,6 @@ export default {
         this.blog = response
       } catch (error) {
         console.error('エラーが発生しました', error)
-        // エラーハンドリングのロジックを追加
       }
     }
   }
