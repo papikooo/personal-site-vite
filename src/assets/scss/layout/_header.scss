@@ -6,11 +6,11 @@
 
 header {
   min-height: 100vh;
-  border-bottom: rem(10) solid var(--color-main-b);
   background-color: var(--color-main-b);
+  position: relative;
 }
 
-.header__inner {
+.header_inner {
   text-align: center;
   padding: rem(15);
   color: #ffffff;

@@ -567,7 +567,7 @@ header {
   background-color: var(--color-main-b);
 }
 
-.header__inner {
+.header_inner {
   padding: 0.5rem 3.13rem 0rem;
   border-bottom: 0.25rem solid var(--color-main);
   display: flex;
@@ -576,18 +576,18 @@ header {
   color: #ffffff;
   letter-spacing: 0.2em;
 }
-.header__inner a {
+.header_inner a {
   color: #ffffff;
 }
-.header__inner a:hover {
+.header_inner a:hover {
   text-shadow: 0 0 5px var(--color-main);
 }
-.header__inner ul {
+.header_inner ul {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.header__inner ul li {
+.header_inner ul li {
   margin: 0 1.88rem;
 }
 

@@ -18,7 +18,7 @@
   margin: rem(40) rem(30);
   display: flex;
   width: 250px;
-  min-height: 250px;
+  min-height: 300px;
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.35);
   text-align: left;
 
@@ -31,10 +31,9 @@
     width: 100%;
   }
 
-  // 後で消す？？
   & img {
     min-width: 100%;
-    max-height: 132px;
+    max-height: 47%;
     object-fit: cover;
   }
 }

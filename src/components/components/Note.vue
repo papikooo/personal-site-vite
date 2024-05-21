@@ -1,5 +1,5 @@
 <template>
-  <article v-for="blog in blogs" :key="blog.id" class="card_box">
+  <article v-for="blog in displayedBlogs" :key="blog.id" class="card_box">
     <router-link :to="{ name: 'NoteDetail', params: { blogId: blog.id } }">
       <img :src="blog.eyecatch?.url" alt="">
       <div class="card_text">
@@ -32,6 +32,19 @@ export default {
       .then((res) => {
         this.blogs = res.contents
       })
+    }
+  },
+  // 表示数調整
+  // Note.vueに表示するブログの数をpropsとして渡す
+  props: {
+    limit: {
+      type: Number,
+      default: null
+    }
+  },
+  computed: {
+    displayedBlogs() {
+      return this.limit ? this.blogs.slice(0, this.limit) : this.blogs;
     }
   }
 }

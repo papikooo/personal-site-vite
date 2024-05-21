@@ -1,18 +1,12 @@
 <script setup>
 import Button from '@c/components/Button.vue'
 import Note from '@c/components/Note.vue'
-
-// defineProps({
-// 	title: String,
-// })
-
 </script>
 
 <template>
 	<div class="inner">
 		<h2>Notes</h2>
-		<p>備忘録</p>
-		<Note />
+    <div class="card_area"><Note :limit="3"/></div>
 		<router-link to="/notes"><Button button_text="and&nbsp;more..." /></router-link>
 
 		<h2>Works</h2>
