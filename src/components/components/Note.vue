@@ -1,17 +1,18 @@
 <template>
-  <article v-for="blog in displayedBlogs" :key="blog.id" class="card_box">
+  <article v-for="blog in displayedBlogs" :key="blog.id" class="c-card__cont-box">
     <router-link :to="{ name: 'NoteDetail', params: { blogId: blog.id } }">
       <img :src="blog.eyecatch?.url" alt="">
-      <div class="card_text">
+      <div class="c-card__cont-txt">
         <h3>{{ blog.title }}</h3>
-        <h4>{{ blog.id }}</h4>
+        <span>{{ blog.category.name }}</span>
       </div>
     </router-link>
   </article>
 </template>
 
 <script>
-import { client } from '@/libs/microcms.js'
+import { client } from '@/libs/microcms.js';
+import '@/libs/scroll.js';
 
 export default {
   name: 'BlogComponent',
@@ -48,4 +49,5 @@ export default {
     }
   }
 }
+
 </script>

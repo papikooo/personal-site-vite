@@ -4,11 +4,19 @@
  * footer
  * -------------------------------- */
 
-.footer_inner {
-  width: 20%;
-  min-width: 164.594px;
-  position: absolute;
-  left: 0;
+footer {
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+  background-color: var(--color-main-b);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;;
+  bottom: 0;
+}
+
+.l_footer__inner {
+  width: 100%;
+  padding: rem(15);
   border-top: rem(4) solid var(--color-main);
   background-color: var(--color-main-b);
   font-size: rem(12);

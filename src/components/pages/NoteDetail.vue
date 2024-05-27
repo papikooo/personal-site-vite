@@ -1,5 +1,5 @@
 <template>
-  <article class="note_detail">
+  <article class="p-article__cont">
     <h2>{{ blog.title }}</h2>
     <img :src="blog.eyecatch?.url" alt="">
     <div v-html="blog.content" />

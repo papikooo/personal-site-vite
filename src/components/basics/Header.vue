@@ -7,7 +7,7 @@ defineProps({
 </script>
 
 <template>
-  <nav class="header_inner">
+  <nav class="l_header__inner">
     <h1><router-link to="/">{{ title }}</router-link></h1>
     <ul>
       <li><router-link to="/notes">Notes</router-link></li>

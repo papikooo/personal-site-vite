@@ -4,7 +4,7 @@ import Footer from '@c/basics/Footer.vue'
 </script>
 
 <template>
-  <div class="container">
+  <div class="l-container">
     <header>
       <Header title="Personal Site" />
     </header>

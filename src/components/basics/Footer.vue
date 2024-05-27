@@ -5,7 +5,7 @@ defineProps({
 </script>
 
 <template>
-<div class="footer_inner">
-  <p class="footer_text">{{ footer_text }}</p>
-</div>
+  <div class="l_footer__inner">
+    <p class="footer_text">{{ footer_text }}</p>
+  </div>
 </template>

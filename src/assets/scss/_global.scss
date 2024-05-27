@@ -1,5 +1,4 @@
 @use "sass:math";
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&family=Raleway&display=swap');
 
 /* --------------------------------
  * 関数管理
@@ -28,8 +27,41 @@
 	--color-text: #333631;
 
 	/* フォント ----------- */
+	@font-face {
+		font-family: "Noto Sans JP";
+		font-style: normal;
+		font-weight: 100;
+		font-display: swap;
+		src: url("/assets/fonts/notosansjp/notosans_thin.woff2") format("woff2"),
+		url("/assets/fonts/notosansjp/notosans_thin.woff") format("woff");
+	}
+	@font-face {
+		font-family: "Noto Sans JP";
+		font-style: normal;
+		font-weight: 300;
+		font-display: swap;
+		src: url("/assets/fonts/notosansjp/notosans_light.woff2") format("woff2"),
+		url("/assets/fonts/notosansjp/notosans_light.woff") format("woff");
+	}
+	@font-face {
+		font-family: "Noto Sans JP";
+		font-style: normal;
+		font-weight: 400;
+		font-display: swap;
+		src: url("/assets/fonts/notosansjp/notosans_regular.woff2") format("woff2"),
+		url("/assets/fonts/notosansjp/notosans_regular.woff") format("woff");
+	}
+	@font-face {
+		font-family: "Noto Sans JP";
+		font-style: normal;
+		font-weight: 600;
+		font-display: swap;
+		src: url("/assets/fonts/notosansjp/notosans_bold.woff2") format("woff2"),
+		url("/assets/fonts/notosansjp/notosans_bold.woff") format("woff");
+	}
+
 	--font-base: "Noto Sans JP", "Raleway",
-		"游ゴシック体", YuGothic, "游ゴシック Medium", "Yu Gothic Medium",
+		"游ゴシック体", "YuGothic", "游ゴシック Medium", "Yu Gothic Medium",
 		"游ゴシック", "Yu Gothic", sans-serif;
 	--font-size: rem(16);
 
