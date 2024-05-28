@@ -30,17 +30,33 @@ img {
   height: auto;
 }
 
+h1 {
+  font-weight: 600;
+}
+
+h2 {
+  margin-top: rem(40);
+  font-size: rem(40);
+  font-weight: 100;
+  letter-spacing: rem(5);
+}
 
 @include sp {
   body {
     line-height: 2;
+  }
+
+  h2 {
+    font-size: rem(20);
   }
 }
 
 /* --------------------------------
  * container
  * -------------------------------- */
- .container {
+.l-container {
   display: grid;
   grid-template-columns: 1fr 4fr;
+  grid-template-rows: auto 1fr auto;
+  height: 100vh;
 }

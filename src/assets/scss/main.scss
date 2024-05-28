@@ -5,12 +5,10 @@
 @use './base/reset';
 @use './base/base';
 /* --------------------------------
- * parts
+ * components
  * -------------------------------- */
-@use './parts/inner';
-@use './parts/title';
-@use './parts/button';
-@use './parts/card';
+@use './components/button';
+@use './components/card';
 /* --------------------------------
  * layout
  * -------------------------------- */
@@ -26,4 +24,5 @@
 /* --------------------------------
  * utility
  * -------------------------------- */
+@use './utility/animation';
 @use './utility/utility';

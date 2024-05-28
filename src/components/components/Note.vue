@@ -1,19 +1,18 @@
 <template>
-  <div class="card_area">
-    <article v-for="blog in blogs" :key="blog.id" class="card_box">
-      <router-link :to="{ name: 'NoteDetail', params: { blogId: blog.id } }">
-        <img :src="blog.eyecatch?.url" alt="">
-        <div class="card_text">
-          <h3>{{ blog.title }}</h3>
-          <h4>{{ blog.id }}</h4>
-        </div>
-      </router-link>
-    </article>
-  </div>
+  <article v-for="blog in displayedBlogs" :key="blog.id" class="c-card__cont-box">
+    <router-link :to="{ name: 'NoteDetail', params: { blogId: blog.id } }">
+      <img :src="blog.eyecatch?.url" alt="">
+      <div class="c-card__cont-txt">
+        <h3>{{ blog.title }}</h3>
+        <span>{{ blog.category.name }}</span>
+      </div>
+    </router-link>
+  </article>
 </template>
 
 <script>
-import { client } from '@/libs/microcms.js'
+import { client } from '@/libs/microcms.js';
+import '@/libs/scroll.js';
 
 export default {
   name: 'BlogComponent',
@@ -24,6 +23,8 @@ export default {
   },
   mounted() {
     this.getPosts()
+    // 初期ロード時にもスクロールイベントを発火させる
+    window.dispatchEvent(new Event('scroll'));
   },
   methods: {
     // getPosts
@@ -32,9 +33,27 @@ export default {
         endpoint: 'notes'
       })
       .then((res) => {
-        this.blogs = res.contents
+        this.blogs = res.contents;
+        this.$nextTick(() => {
+          // DOMの更新後にスクロールイベントを手動でトリガー
+          window.dispatchEvent(new Event('scroll'));
+        });
       })
+    }
+  },
+  // 表示数調整
+  // Note.vueに表示するブログの数をpropsとして渡す
+  props: {
+    limit: {
+      type: Number,
+      default: null
+    }
+  },
+  computed: {
+    displayedBlogs() {
+      return this.limit ? this.blogs.slice(0, this.limit) : this.blogs;
     }
   }
 }
+
 </script>

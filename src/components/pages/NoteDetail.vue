@@ -1,8 +1,8 @@
 <template>
-  <article class="note_detail">
-    <h2>{{ blog.title }}</h2>
-    <img :src="blog.eyecatch?.url" alt="">
-    <div v-html="blog.content" />
+  <article class="p-article__cont u-fadein">
+    <img :src="blog.eyecatch?.url" alt="" class="p-article__mv">
+    <h2 class="p-article__ttl">{{ blog.title }}</h2>
+    <div v-html="blog.content" class="p-article__inner"/>
   </article>
 </template>
 

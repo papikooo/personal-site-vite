@@ -4,17 +4,15 @@ import Footer from '@c/basics/Footer.vue'
 </script>
 
 <template>
-  <div class="container">
+  <div class="l-container">
     <header>
       <Header title="Personal Site" />
     </header>
-    <div>
-      <main>
-        <router-view />
-      </main>
-      <footer>
-        <Footer footer_text="&copy;nm" />
-      </footer>
-    </div>
+    <main>
+      <router-view />
+    </main>
+    <footer>
+      <Footer footer_text="&copy;nm" />
+    </footer>
   </div>
 </template>

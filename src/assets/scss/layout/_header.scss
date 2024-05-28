@@ -1,16 +1,22 @@
 @use '../global' as *;
 
 /* --------------------------------
- * header
- * -------------------------------- */
+* header
+* -------------------------------- */
 
-header {
-  min-height: 100vh;
-  border-bottom: rem(10) solid var(--color-main-b);
-  background-color: var(--color-main-b);
+header, footer {
+  position: sticky;
+  z-index: 5;
 }
 
-.header__inner {
+header {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+  background-color: var(--color-main-b);
+  top: 0;
+}
+
+.l_header__inner {
   text-align: center;
   padding: rem(15);
   color: #ffffff;

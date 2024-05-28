@@ -458,60 +458,13 @@ img {
   }
 }
 /* --------------------------------
- * inner
+ * container
  * -------------------------------- */
-.inner {
-  width: var(--w-container);
-  margin: 0 auto;
-  padding-right: var(--pc-padding);
-  padding-left: var(--pc-padding);
-}
-@media screen and (max-width: 1229px) {
-  .inner {
-    padding-right: var(--tab-padding);
-    padding-left: var(--tab-padding);
-  }
-}
-@media screen and (max-width: 699px) {
-  .inner {
-    padding-right: var(--sp-padding);
-    padding-left: var(--sp-padding);
-  }
+.container {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
 }
 
-.w1180 {
-  max-width: calc(1180px + var(--pc-padding) * 2);
-}
-@media screen and (max-width: 1229px) {
-  .w1180 {
-    max-width: calc(1180px + var(--tab-padding) * 2);
-  }
-}
-@media screen and (max-width: 699px) {
-  .w1180 {
-    max-width: calc(1180px + var(--sp-padding) * 2);
-  }
-}
-
-/* --------------------------------
- * title
- * -------------------------------- */
-h1 {
-  font-weight: bold;
-}
-
-h2 {
-  color: var(--color-main);
-  font-size: 2.5rem;
-  font-weight: bold;
-  letter-spacing: 0.31rem;
-}
-
-@media screen and (max-width: 699px) {
-  h2 {
-    font-size: 1.25rem;
-  }
-}
 /* --------------------------------
  * button
  * -------------------------------- */
@@ -530,6 +483,7 @@ button {
 }
 button:hover {
   text-shadow: 0 0 5px var(--color-main);
+  transition: all 0.3s;
 }
 button:active {
   border-bottom: none;
@@ -539,63 +493,92 @@ button:active {
 /* --------------------------------
  * card
  * -------------------------------- */
-.card_area {
-  margin-top: 1.25rem;
-  margin-bottom: 1.25rem;
+.c-card__cont {
+  max-width: var(--w-container);
+  margin: 1.88rem auto 2.5rem;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
-.card {
-  width: 200px;
-  height: 200px;
-  border-radius: 100px;
-  background-color: var(--color-accent);
-  color: #ffffff;
+.c-card__cont::after {
+  content: "";
+  display: block;
+  width: 250px;
+  height: 0;
 }
-.card p, .card a {
-  color: #ffffff;
+
+.c-card__cont-box {
+  margin: 2.5rem 1.88rem;
+  display: flex;
+  width: 250px;
+  min-height: 300px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.35);
+  text-align: left;
+}
+.c-card__cont-box:hover {
+  box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.35);
+  transition: all 1s;
+}
+.c-card__cont-box a {
+  width: 100%;
+}
+.c-card__cont-box img {
+  min-width: 100%;
+  max-height: 47%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.c-card__cont-txt {
+  padding: 0.63rem 1.25rem;
+  font-size: 0.88rem;
+  line-height: 1.5em;
+}
+.c-card__cont-txt h3 {
+  margin-bottom: 0.63rem;
+  font-size: 1rem;
+  font-weight: bold;
 }
 
 /* --------------------------------
  * header
  * -------------------------------- */
 header {
-  border-bottom: 0.63rem solid var(--color-main-b);
+  min-height: 100vh;
   background-color: var(--color-main-b);
+  position: relative;
 }
 
-.header__inner {
-  padding: 0.5rem 3.13rem 0rem;
-  border-bottom: 0.25rem solid var(--color-main);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.l_header__inner {
+  text-align: center;
+  padding: 0.94rem;
   color: #ffffff;
   letter-spacing: 0.2em;
 }
-.header__inner a {
+.l_header__inner h1 {
+  margin: 2.5rem 1.25rem;
+}
+.l_header__inner a {
   color: #ffffff;
 }
-.header__inner a:hover {
+.l_header__inner a:hover {
   text-shadow: 0 0 5px var(--color-main);
+  transition: all 0.3s;
 }
-.header__inner ul {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.header__inner ul li {
-  margin: 0 1.88rem;
+.l_header__inner ul li {
+  margin: 1.25rem;
 }
 
 /* --------------------------------
  * footer
  * -------------------------------- */
-footer {
-  margin-top: 5rem;
+.l_footer__inner {
+  width: 20%;
+  min-width: 164.594px;
+  position: absolute;
+  left: 0;
   border-top: 0.25rem solid var(--color-main);
   background-color: var(--color-main-b);
   font-size: 0.75rem;
@@ -609,6 +592,24 @@ footer {
  * -------------------------------- */
 main {
   text-align: center;
+}
+
+.l-main__inner {
+  margin: 0 auto 2.5rem;
+  padding-right: var(--pc-padding);
+  padding-left: var(--pc-padding);
+}
+@media screen and (max-width: 1229px) {
+  .l-main__inner {
+    padding-right: var(--tab-padding);
+    padding-left: var(--tab-padding);
+  }
+}
+@media screen and (max-width: 699px) {
+  .l-main__inner {
+    padding-right: var(--sp-padding);
+    padding-left: var(--sp-padding);
+  }
 }
 
 .top_fv img {
@@ -668,7 +669,7 @@ main {
  * base
  * -------------------------------- */
 /* --------------------------------
- * parts
+ * components
  * -------------------------------- */
 /* --------------------------------
  * layout
