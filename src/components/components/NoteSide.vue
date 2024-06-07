@@ -1,18 +1,17 @@
+<!-- sidebar -->
 <template>
-  <article v-for="blog in displayedBlogs" :key="blog.id" class="c-card__cont-box">
-    <router-link :to="{ name: 'NoteDetail', params: { blogId: blog.id } }">
-      <img :src="blog.eyecatch?.url" alt="">
-      <div class="c-card__cont-txt">
-        <h3>{{ blog.title }}</h3>
-        <span>{{ blog.category.name }}</span>
-      </div>
-    </router-link>
-  </article>
+  <ul class="c-sidebar">
+    <li v-for="blog in displayedBlogs" :key="blog.id">
+      <router-link :to="{ name: 'NoteDetail', params: { blogId: blog.id } }">
+        <p>{{ blog.title }}</p>
+      </router-link>
+    </li>
+  </ul>
 </template>
 
 <script>
 import { client } from '@/libs/microcms.js';
-import '@/libs/scroll.js';
+// import '@/libs/scroll.js';
 
 export default {
   name: 'BlogComponent',
@@ -22,9 +21,9 @@ export default {
     }
   },
   mounted() {
-    this.getPosts()
-    // 初期ロード時にもスクロールイベントを発火させる
-    window.dispatchEvent(new Event('scroll'));
+    // this.getPosts()
+    // // 初期ロード時にもスクロールイベントを発火させる
+    // window.dispatchEvent(new Event('scroll'));
   },
   methods: {
     // getPosts

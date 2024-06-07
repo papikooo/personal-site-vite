@@ -35,7 +35,7 @@ h1 {
 }
 
 h2 {
-  // color: var(--color-main);
+  margin-top: rem(40);
   font-size: rem(40);
   font-weight: 100;
   letter-spacing: rem(5);
@@ -54,7 +54,7 @@ h2 {
 /* --------------------------------
  * container
  * -------------------------------- */
- .l-container {
+.l-container {
   display: grid;
   grid-template-columns: 1fr 4fr;
   grid-template-rows: auto 1fr auto;

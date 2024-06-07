@@ -1,8 +1,8 @@
 <template>
-  <article class="p-article__cont">
-    <h2>{{ blog.title }}</h2>
-    <img :src="blog.eyecatch?.url" alt="">
-    <div v-html="blog.content" />
+  <article class="p-article__cont u-fadein">
+    <h2 class="p-article__ttl">{{ blog.title }}</h2>
+    <img :src="blog.eyecatch?.url" alt="" class="p-article__mv">
+    <div v-html="blog.content" class="p-article__inner"/>
   </article>
 </template>
 
