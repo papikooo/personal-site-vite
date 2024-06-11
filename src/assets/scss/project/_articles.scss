@@ -5,35 +5,95 @@
  * -------------------------------- */
 
 .p-article__cont {
-	max-width: var(--w-container);
+	max-width: var(--w-container-blog);
 	margin: 0 auto rem(40);
 	padding: var(--pc-padding);
+}
+
+.p-article__mv {
+	margin: rem(40) auto;
+	max-height: 300px;
 }
 
 .p-article__ttl {
 	font-size: rem(32);
 	font-weight: 400;
-	color: var(--color-main);
-	text-align: left;
-	letter-spacing: 0.15em;
+	color: var(--color-sub);
+	// background: var(--color-bg);
+	text-align: center;
+	letter-spacing: 0.05em;
 }
 
-.p-article__mv {
-	margin: rem(40) auto;
-	max-width: 720px;
+.p-article__toc {
+	max-width: rem(650);
+	margin: rem(60) auto rem(40);
+	text-align: left;
+
+	& span {
+		margin-left: rem(30);
+		padding: rem(10) rem(40);
+		border-radius: rem(10) rem(10) rem(0) rem(0);
+		color: var(--color-sub);
+		font-weight: 600;
+		letter-spacing: 0.1em;
+		background-color: var(--color-bg);
+		z-index: 1;
+	}
+	& ul {
+		padding: rem(40) rem(50) rem(50);
+		border-radius: rem(10);
+		background-color: var(--color-bg);
+		z-index: 2;
+	}
+	& ul li {
+		position: relative;
+		border-bottom: 3px dotted #fff;
+		line-height: 2.8;
+		text-align: left;
+		padding-left: 1.1em;
+
+		& ::before {
+			content: "";
+			position: absolute;
+			top: 1.25em;
+			left: 0;
+			width: rem(6);
+			height: rem(6);
+			background-color: var(--color-sub);
+		}
+	}
+	& ul li a {
+		color: var(--color-sub);
+	}
 }
 
 .p-article__inner {
+	padding-top: rem(5);
 	padding-bottom: rem(50);
 	text-align: left;
 
 	& h3 {
+		margin-top: rem(50);
+		margin-bottom: rem(10);
+		padding: rem(15) rem(20);
+		border-radius: rem(5);
+		font-size: rem(25);
+		font-weight: 400;
+		line-height: 1.5;
+		background-color: var(--color-bg);
+		// border: 2px solid var(--color-main);
+		border-bottom: 2px solid var(--color-sub);
+		color: var(--color-sub);
+
+	}
+
+	& h4 {
 		margin-top: rem(15);
 		margin-bottom: rem(10);
 		font-size: rem(25);
 		font-weight: 400;
 		position: relative;
-		letter-spacing: 0.15em;
+		letter-spacing: 0.12em;
 
 		&::before {
 			content: "";
