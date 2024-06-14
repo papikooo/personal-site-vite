@@ -1,7 +1,7 @@
 <template>
   <article v-for="blog in displayedBlogs" :key="blog.id" class="c-card__cont-box">
     <router-link :to="{ name: 'NoteDetail', params: { blogId: blog.id } }">
-      <img :src="blog.eyecatch?.url" alt="">
+      <inline-svg :src="blog.eyecatch?.url" class="c-article__icon"/>
       <div class="c-card__cont-txt">
         <h3>{{ blog.title }}</h3>
         <span>{{ blog.category.name }}</span>
@@ -11,8 +11,9 @@
 </template>
 
 <script>
-import { client } from '@/libs/microcms.js';
-import '@/libs/scroll.js';
+import { client } from '@/libs/microcms.js'
+import '@/libs/scroll.js'
+import InlineSvg from 'vue-inline-svg'
 
 export default {
   name: 'BlogComponent',
@@ -20,6 +21,9 @@ export default {
     return {
       blogs: []
     }
+  },
+  components: {
+    InlineSvg
   },
   mounted() {
     this.getPosts()

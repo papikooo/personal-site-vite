@@ -25,7 +25,7 @@
   margin: rem(40) rem(30);
   display: flex;
   width: 250px;
-  min-height: 300px;
+  height: 300px;
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.35);
   text-align: left;
   position: relative;
@@ -49,6 +49,7 @@
 
   & a {
     width: 100%;
+    // text-align: center;
   }
 
   & img {
@@ -57,8 +58,6 @@
     object-fit: cover;
   }
 }
-
-.c-card__cont-box
 
 .c-card__cont-txt {
   padding: rem(10) rem(20);
