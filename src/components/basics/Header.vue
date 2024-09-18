@@ -12,6 +12,7 @@ defineProps({
     <ul>
       <li><router-link to="/notes">Notes</router-link></li>
       <li><router-link to="/works">Works</router-link></li>
+      <li><router-link to="/games">Games</router-link></li>
       <li><router-link to="/plans">Plan</router-link></li>
     </ul>
   </nav>

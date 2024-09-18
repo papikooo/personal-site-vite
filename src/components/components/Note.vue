@@ -4,7 +4,7 @@
       <inline-svg :src="blog.eyecatch?.url" class="c-article__icon"/>
       <div class="c-card__cont-txt">
         <h3>{{ blog.title }}</h3>
-        <span>{{ blog.category.name }}</span>
+        <span>{{ blog.category?.name }}</span>
       </div>
     </router-link>
   </article>
@@ -16,14 +16,27 @@ import '@/libs/scroll.js'
 import InlineSvg from 'vue-inline-svg'
 
 export default {
-  name: 'BlogComponent',
+  name: 'Note',
+  components: {
+    InlineSvg
+  },
+  // propsとして渡す
+  props: {
+    // Note.vueに表示するブログの数
+    limit: {
+      type: Number,
+      default: null
+    },
+    // カテゴリ
+    category: {
+      type: String,
+      required: true
+    }
+  },
   data() {
     return {
       blogs: []
     }
-  },
-  components: {
-    InlineSvg
   },
   mounted() {
     this.getPosts()
@@ -34,7 +47,11 @@ export default {
     // getPosts
     getPosts() {
       client.get({
-        endpoint: 'notes'
+        endpoint: 'notes',
+        queries: {
+          filters: `category[equals]${this.category}`,  // カテゴリフィルター
+          limit: this.limit
+        }
       })
       .then((res) => {
         this.blogs = res.contents;
@@ -43,14 +60,9 @@ export default {
           window.dispatchEvent(new Event('scroll'));
         });
       })
-    }
-  },
-  // 表示数調整
-  // Note.vueに表示するブログの数をpropsとして渡す
-  props: {
-    limit: {
-      type: Number,
-      default: null
+      .catch((err) => {
+        console.error('Error fetching posts:', err)
+      })
     }
   },
   computed: {
@@ -59,5 +71,4 @@ export default {
     }
   }
 }
-
 </script>
