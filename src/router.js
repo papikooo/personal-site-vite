@@ -11,7 +11,7 @@ const routes = [
     component: Notes,
     props: true
   },
-	{ path: '/notes/detail/:blogId', name: 'NoteDetail', component: NoteDetail },
+	{ path: '/:category/:blogId', name: 'NoteDetail', component: NoteDetail },
 ]
 
 const router = createRouter({
