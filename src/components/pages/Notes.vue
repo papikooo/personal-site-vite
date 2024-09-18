@@ -16,15 +16,12 @@ export default {
     Note
   },
   computed: {
-    categoryId() {
-      return this.$route.params.category
-    },
     categoryName() {
-      // カテゴリIDに基づいて表示する名前を決定
-      switch (this.categoryId) {
+      // props から category を取得して表示する名前を決定
+      switch (this.category) {
         case 'notes': return 'Notes'
         case 'works': return 'Works'
-        case 'games': return 'Games'        
+        case 'games': return 'Games'
         case 'plans': return 'Plans'
         default: return 'Unknown'
       }

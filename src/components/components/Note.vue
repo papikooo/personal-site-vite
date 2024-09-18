@@ -1,6 +1,6 @@
 <template>
   <article v-for="blog in displayedBlogs" :key="blog.id" class="c-card__cont-box">
-    <router-link :to="{ name: 'NoteDetail', params: { blogId: blog.id } }">
+    <router-link :to="{ name: 'NoteDetail', params: { category: this.category, blogId: blog.id } }">
       <inline-svg :src="blog.eyecatch?.url" class="c-article__icon"/>
       <div class="c-card__cont-txt">
         <h3>{{ blog.title }}</h3>
@@ -30,7 +30,7 @@ export default {
     // カテゴリ
     category: {
       type: String,
-      required: true
+      required: false
     }
   },
   data() {
@@ -46,12 +46,14 @@ export default {
   methods: {
     // getPosts
     getPosts() {
+      const queries = { limit: this.limit }; // 表示数
+      if (this.category) {
+        queries.filters = `category[equals]${this.category}`; // カテゴリ
+      }
+
       client.get({
         endpoint: 'notes',
-        queries: {
-          filters: `category[equals]${this.category}`,  // カテゴリフィルター
-          limit: this.limit
-        }
+        queries
       })
       .then((res) => {
         this.blogs = res.contents;

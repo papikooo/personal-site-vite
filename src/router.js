@@ -5,12 +5,11 @@ import NoteDetail from '@c/pages/NoteDetail.vue'
 
 const routes = [
 	{ path: '/', name: 'Top', component: Top },
-	{
-    path: '/:category',
-    name: 'Notes',
-    component: Notes,
-    props: true
-  },
+	{ path: '/notes', name: 'Notes', component: Notes, props: { category: 'notes' } },
+	{ path: '/works', name: 'Works', component: Notes, props: { category: 'works' } },
+	{ path: '/games', name: 'Games', component: Notes, props: { category: 'games' } },
+	{ path: '/plans', name: 'Plans', component: Notes, props: { category: 'plans' } },
+	// { path: '/:category', name: 'Notes', component: Notes, props: true },
 	{ path: '/:category/:blogId', name: 'NoteDetail', component: NoteDetail },
 ]
 
