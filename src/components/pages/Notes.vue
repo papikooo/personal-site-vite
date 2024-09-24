@@ -1,8 +1,8 @@
 <template>
-  <section id="notes" class="u-anime_fadein">
+  <section :id="category" class="u-anime_fadein">
     <h2>{{ categoryName }}</h2>
     <div class="c-card__cont">
-      <Note :key="categoryId" :category="categoryId" />
+      <Note :key="category" :category="category" />
     </div>
   </section>
 </template>
@@ -14,6 +14,13 @@ export default {
   name: 'Notes',
   components: {
     Note
+  },
+  // props で category を受け取る
+  props: {
+    category: {
+      type: String,
+      required: true
+    }
   },
   computed: {
     categoryName() {
