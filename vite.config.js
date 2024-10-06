@@ -20,8 +20,6 @@ export default defineConfig({
     outDir: '../dist', // 出力場所の指定
     emptyOutDir: true,
     rollupOptions: {
-      // ライブラリにバンドルされるべきではない依存関係（vue）を外部化しない
-      // external: ['vue'], // 外部化しない
       input: htmlFiles,
       output: {
         // build時の名前をentry、chunk、assets毎に指定（既定のハッシュを消す）
@@ -46,3 +44,6 @@ export default defineConfig({
     }
   }
 })
+
+      // ライブラリにバンドルされるべきではない依存関係（vue）を外部化しない
+      // external: ['vue'], // 外部化しない
