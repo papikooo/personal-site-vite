@@ -1,0 +1,41 @@
+@use '../global' as *;
+
+/* --------------------------------
+ * main
+ * -------------------------------- */
+
+main {
+  grid-column: 2 / 3;
+  grid-row: 1 / 4;
+  text-align: center;
+  overflow: auto;
+}
+
+.l-main__inner {
+  margin: rem(40) auto rem(70);
+  padding-right: var(--pc-padding);
+  padding-left: var(--pc-padding);
+
+  @include tab {
+    padding-right: var(--tab-padding);
+    padding-left: var(--tab-padding);
+  }
+
+  @include sp {
+    padding-right: var(--sp-padding);
+    padding-left: var(--sp-padding);
+  }
+}
+
+//  fv
+
+
+// sp
+
+@include sp {
+
+  // fv
+
+  
+
+}

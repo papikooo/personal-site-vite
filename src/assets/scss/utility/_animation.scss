@@ -1,0 +1,48 @@
+.u-anime_fadein {
+	animation: fadeInAnime 2.5s forwards;
+	opacity: 0;
+	}
+	
+	@keyframes fadeInAnime{
+		from {
+			opacity: 0;
+		}
+	
+		to {
+			opacity: 1;
+		}
+	}
+
+// ローディング実装する場合
+// .u-anime_loading {
+// 	width: 200px;
+// 	margin: 0px auto;
+
+// 	.loading_cont {
+// 		height: 100px;
+// 		width: 40px;
+// 		margin-left: 20px;
+		
+// 		.bouncy {
+// 			width: 40px;
+// 			height: 40px;
+// 			border-radius: 20px;
+// 			background: var(--color-main);
+// 			animation: bouncy 2s infinite ease-in-out;
+// 		}
+// 	}
+	
+// 	@keyframes bouncy {
+// 		40% {
+// 			height: 40px;
+// 		}
+// 		50% {
+// 			transform: translate(0, 65px);
+// 			height: 34px;
+// 			border-radius: 20px;
+// 		}
+// 		65% {
+// 			height: 40px; 
+// 		}
+// 	}
+// }

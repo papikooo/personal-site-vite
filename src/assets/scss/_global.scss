@@ -1,0 +1,118 @@
+@use "sass:math";
+
+/* --------------------------------
+ * 関数管理
+ * -------------------------------- */
+/* px→rem ----------- */
+@function rem($px, $digit: 2) {
+	$n: 1;
+
+	@for $i from 1 through $digit {
+		$n: $n * 10;
+	}
+
+	@return calc(round(math.div($px, 16) * $n * 1rem) / $n);
+}
+
+/* --------------------------------
+ * 変数管理
+ * -------------------------------- */
+:root {
+	/* 色 ----------- */
+	--color-main: #aacf53;
+	--color-main-b: #333631;
+	--color-sub: #546629;
+	--color-accent: #cf7853;
+	--color-bg: #F0EEDA;
+	--color-text: #333631;
+
+	/* フォント ----------- */
+	@font-face {
+		font-family: "Noto Sans JP";
+		font-style: normal;
+		font-weight: 100;
+		font-display: swap;
+		src: url("/assets/fonts/notosansjp/notosans_thin.woff2") format("woff2"),
+		url("/assets/fonts/notosansjp/notosans_thin.woff") format("woff");
+	}
+	@font-face {
+		font-family: "Noto Sans JP";
+		font-style: normal;
+		font-weight: 300;
+		font-display: swap;
+		src: url("/assets/fonts/notosansjp/notosans_light.woff2") format("woff2"),
+		url("/assets/fonts/notosansjp/notosans_light.woff") format("woff");
+	}
+	@font-face {
+		font-family: "Noto Sans JP";
+		font-style: normal;
+		font-weight: 400;
+		font-display: swap;
+		src: url("/assets/fonts/notosansjp/notosans_regular.woff2") format("woff2"),
+		url("/assets/fonts/notosansjp/notosans_regular.woff") format("woff");
+	}
+	@font-face {
+		font-family: "Noto Sans JP";
+		font-style: normal;
+		font-weight: 600;
+		font-display: swap;
+		src: url("/assets/fonts/notosansjp/notosans_bold.woff2") format("woff2"),
+		url("/assets/fonts/notosansjp/notosans_bold.woff") format("woff");
+	}
+
+	--font-base: "Noto Sans JP", "Raleway",
+		"游ゴシック体", "YuGothic", "游ゴシック Medium", "Yu Gothic Medium",
+		"游ゴシック", "Yu Gothic", sans-serif;
+	--font-size: rem(16);
+
+	/* 余白 ----------- */
+	--pc-padding: 20px;
+	--tab-padding: 20px;
+	--sp-padding: 10px;
+
+	/* 幅 ----------- */
+	--w-container: 980px;
+	--w-container-blog: 820px;
+}
+
+/* --------------------------------
+ *  レスポンシブ定義
+ * -------------------------------- */
+/* ブレイクポイント ----------- */
+/* PC（～以上） */
+$pc: 1230px;
+/* タブレット（～以下） */
+$tab: 1229px;
+/* スマホ（～以下） */
+$sp: 699px;
+
+/* --------------------------------
+ * メディアクエリ
+ * -------------------------------- */
+/* PC */
+@mixin pc {
+	@media screen and (min-width: $pc) {
+		@content;
+	}
+}
+
+/* タブレット */
+@mixin tab {
+	@media screen and (max-width: $tab) {
+		@content;
+	}
+}
+
+/* スマホ */
+@mixin sp {
+	@media screen and (max-width: $sp) {
+		@content;
+	}
+}
+
+/*
+下記のように呼び出す
+@include sp {
+
+}
+*/

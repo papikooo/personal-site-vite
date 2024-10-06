@@ -1,0 +1,62 @@
+@use '../global' as *;
+
+/* --------------------------------
+ * utility
+ * -------------------------------- */
+
+// display
+.u-pc {
+  display: block;
+}
+@include tab {
+  .u-pc {
+    display: none;
+  }
+}
+@include sp {
+  .u-pc {
+    display: none;
+  }
+}
+
+
+.u-pc_tab {
+  display: block;
+}
+@include sp {
+  .u-pc_tab {
+    display: none;
+  }
+}
+
+.u-sp {
+  display: none;
+}
+@include sp {
+  .u-sp {
+    display: block;
+  }
+}
+
+// svg color-change
+.u-svg-maingreen path {
+	fill: var(--color-main) !important;
+}
+.u-svg-mainblack path {
+	fill: var(--color-main-b) !important;
+}
+.u-svg-orange path {
+	fill: var(--color-accent) !important;
+}
+.u-svg-green path {
+	fill: #53cf78 !important;
+}
+.u-svg-blue path {
+	fill: #53a9cf !important;
+}
+.u-svg-purple path {
+	fill: #7853cf !important;
+}
+.u-svg-pink path {
+	fill: #cf53a9 !important;
+}
