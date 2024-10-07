@@ -6,11 +6,11 @@
 
 .c-card__cont {
   max-width: var(--w-container);
-  margin: rem(30) auto rem(40);
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
+  margin: rem(50) auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr;
+  gap: rem(40) 0;
 }
 
 .c-card__cont::after {
@@ -22,10 +22,10 @@
 
 // aタグを親要素いっぱいに広げるためdisplay:flex
 .c-card__cont-box {
-  margin: rem(40) rem(30);
   display: flex;
   width: 250px;
   height: 300px;
+  margin: 0 auto;
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.35);
   text-align: left;
   position: relative;
@@ -50,7 +50,6 @@
 
   & a {
     width: 100%;
-    // text-align: center;
   }
 
   & img {

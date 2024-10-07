@@ -12,7 +12,6 @@
 	& ul li {
 		position: relative;
 		text-align: left;
-		padding-left: 1.1em;
 
 		& ::before {
 			content: "";
@@ -55,6 +54,7 @@
 		z-index: 2;
 	}
 	& ul li {
+		padding-left: 1.1em;
 		border-bottom: 1px dotted var(--color-main);
 		line-height: 2.8;
 
@@ -78,7 +78,7 @@
 	}
 
 	& ul, ol, figure {
-		margin: rem(30) rem(15);
+		margin: rem(20) rem(15);
 	}
 
 	& img {
@@ -122,6 +122,11 @@
 		font-weight: 600;
 		font-size: rem(17);
 	}
+
+	// & li {
+	// 	list-style-type: square;
+	// 	list-style-position: inside;
+	// }
 }
 
 .c-article__icon {

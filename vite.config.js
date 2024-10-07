@@ -18,16 +18,10 @@ export default defineConfig({
     },
   },
   build: {
-    base: '/src', //相対パスでビルド
-    outDir: '../dist', //出力場所の指定
+    base: '/', // ルートディレクトリに変更
+    outDir: '../dist', // 出力場所の指定
     emptyOutDir: true,
     rollupOptions: {
-      // ライブラリにバンドルされるべきではない依存関係（vue）を外部化
-      external: ['vue'],
-      // 外部化された依存関係のために UMD（moduleの一種） のビルドで使用するグローバル変数を提供
-      globals: {
-      vue: 'Vue',
-      },
       input: htmlFiles,
       output: {
         // build時の名前をentry、chunk、assets毎に指定（既定のハッシュを消す）
@@ -35,15 +29,15 @@ export default defineConfig({
         chunkFileNames: `assets/js/[name].js`,
         assetFileNames: (assetInfo) => {
           let extType = assetInfo.name.split('.')[1];
-          //Webフォントファイルの振り分け
+          // Webフォントファイルの振り分け
           if (/ttf|otf|eot|woff|woff2/i.test(extType)) {
             extType = 'fonts';
           }
           if (/png|jpe?g|svg|gif|tiff|bmp|ico/i.test(extType)) {
             extType = 'images';
           }
-          //ビルド時のCSS名を明記してコントロールする
-          if(extType === 'css') {
+          // ビルド時のCSS名を明記してコントロールする
+          if (extType === 'css') {
             return `assets/css/style.css`;
           }
           return `assets/${extType}/[name][extname]`;
@@ -53,6 +47,8 @@ export default defineConfig({
   }
 })
 
+// ライブラリにバンドルされるべきではない依存関係（vue）を外部化しない
+// external: ['vue'], // 外部化しない
 
 // ------------メモ（試行して上手くいかなかったもの）------------
 
