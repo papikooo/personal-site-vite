@@ -4,7 +4,7 @@
       <inline-svg :src="blog.eyecatch?.url" class="c-article__icon"/>
       <div class="c-card__cont-txt">
         <h3>{{ blog.title }}</h3>
-        <span>{{ blog.category?.name }}</span>
+        <span v-for="tag in blog.tags" :key="tag.id" class="c-card__cont-tags">{{ tag.name }}</span>
       </div>
     </router-link>
   </article>

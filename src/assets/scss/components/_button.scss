@@ -11,7 +11,6 @@ button {
   margin-bottom: rem(10);
   padding: rem(3) rem(30);
   border-bottom: solid rem(5) var(--color-main);
-  border-right: solid rem(5) var(--color-main);
   border-radius: rem(10);
   font-size: rem(14);
   font-weight: bold;
@@ -20,14 +19,9 @@ button {
   background-color: var(--color-main-b);
 
   &:hover {
-    text-shadow: 0 0 5px var(--color-main);
-    transition: all 0.3s;
-    // box-shadow: 0 0 rem(5) var(--color-main);
-  }
-
-  &:active {
-    border-bottom: none;
-    border-right: none;
+    border-bottom: solid rem(5) var(--color-main-b);
+    background-color: var(--color-main);
+    transition: all ease-out 0.3s;
   }
 }
 
