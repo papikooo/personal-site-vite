@@ -1,12 +1,38 @@
-<script setup>
-import Note from '@c/components/Note.vue'
-</script>
-
 <template>
-  <section id="notes">
-    <h2>Notes</h2>
+  <section :id="category" class="u-anime_fadein">
+    <h2>{{ categoryName }}</h2>
     <div class="c-card__cont">
-      <Note />
+      <Note :key="category" :category="category" />
     </div>
   </section>
 </template>
+
+<script>
+import Note from '@c/components/Note.vue'
+
+export default {
+  name: 'Notes',
+  components: {
+    Note
+  },
+  // props で category を受け取る
+  props: {
+    category: {
+      type: String,
+      required: true
+    }
+  },
+  computed: {
+    categoryName() {
+      // props から category を取得して表示する名前を決定
+      switch (this.category) {
+        case 'notes': return 'Notes'
+        case 'works': return 'Works'
+        case 'games': return 'Games'
+        case 'plans': return 'Plans'
+        default: return 'Unknown'
+      }
+    }
+  },
+}
+</script>

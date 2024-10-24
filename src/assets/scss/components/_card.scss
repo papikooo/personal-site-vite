@@ -6,11 +6,11 @@
 
 .c-card__cont {
   max-width: var(--w-container);
-  margin: rem(30) auto rem(40);
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
+  margin: rem(50) auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr;
+  gap: rem(40) 0;
 }
 
 .c-card__cont::after {
@@ -22,14 +22,15 @@
 
 // aタグを親要素いっぱいに広げるためdisplay:flex
 .c-card__cont-box {
-  margin: rem(40) rem(30);
   display: flex;
   width: 250px;
-  min-height: 300px;
+  height: 300px;
+  margin: 0 auto;
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.35);
   text-align: left;
   position: relative;
   top: 0;
+  border-radius: 5px;
   // fadein
   opacity: 0;
   visibility: hidden;
@@ -58,8 +59,6 @@
   }
 }
 
-.c-card__cont-box
-
 .c-card__cont-txt {
   padding: rem(10) rem(20);
   font-size: rem(14);
@@ -70,4 +69,13 @@
     font-size: rem(16);
     font-weight: 600;
   }
+}
+
+.c-card__cont-tags {
+  display: inline-block;
+  margin: rem(5) rem(5) rem(5) 0;
+  padding: rem(3) rem(10);
+  border-radius: rem(5);
+  color: #fff;
+  background-color: var(--color-main);
 }

@@ -1,29 +1,43 @@
 <template>
-  <article class="p-article__cont u-fadein">
-    <img :src="blog.eyecatch?.url" alt="" class="p-article__mv">
-    <h2 class="p-article__ttl">{{ blog.title }}</h2>
-    <div class="p-article__toc">
-      <span>目次</span>
-      <ul>
-        <li v-for="(heading, index) in tocHeadings" :key="index">
-          <a :href="'#' + heading.id">{{ heading.text }}</a>
-        </li>
-      </ul>
+  <div v-if="isDataLoaded">
+    <article class="p-article__cont u-anime_fadein">
+      <inline-svg :src="blog.eyecatch?.url" class="c-article__icon"/>
+      <h2 class="p-article__ttl">{{ blog.title }}</h2>
+      <div class="p-article__toc">
+        <span>目次</span>
+        <ul>
+          <li v-for="(heading, index) in tocHeadings" :key="index">
+            <a :href="'#' + heading.id" @click.prevent="scrollTo(heading.id)">{{ heading.text }}</a>
+          </li>
+        </ul>
+      </div>
+      <div v-html="formattedContent" class="p-article__inner"/>
+    </article>
+  </div>
+  <!-- ローディング実装する場合 -->
+  <!-- <div v-else class="u-anime_loading">
+    <div class="loading_cont">
+      <div class="bouncy"></div>
     </div>
-    <div v-html="blog.content" class="p-article__inner"/>
-  </article>
+  </div> -->
 </template>
 
 <script>
 import { client } from '@/libs/microcms.js'
+import InlineSvg from 'vue-inline-svg'
 
 export default {
   name: 'NoteDetail',
   data() {
     return {
       blog: {},
-      tocHeadings: [] //目次用
+      formattedContent: '', //htmlフォーマット
+      tocHeadings: [], //目次用
+      isDataLoaded: false // データが読み込まれたかどうか
     }
+  },
+  components: {
+    InlineSvg
   },
   mounted() {
     this.getPost()
@@ -37,25 +51,58 @@ export default {
           contentId: blogId
         })
         this.blog = response
-        this.extractHeadings(response.content)  // 目次を抽出
+        this.formatContent(response.content) // コンテンツをフォーマット
+        this.isDataLoaded = true // データ取得完了
       } catch (error) {
         console.error('エラーが発生しました', error)
       }
     },
-    // 目次
-    extractHeadings(html) {
+    // フォーマット（見出しを変換、目次抽出）
+    formatContent(content) {
       const parser = new DOMParser()
-      const doc = parser.parseFromString(html, 'text/html')
-      const headings = doc.querySelectorAll('h3')
-      const tocHeadings = Array.from(headings).map((heading, index) => {
-        const id = `heading-${index}`
-        heading.setAttribute('id', id)  // 各見出しにユニークなIDを設定
-        return { id, text: heading.innerText }
+      const doc = parser.parseFromString(content, 'text/html')
+      const headings = doc.querySelectorAll('h1, h2, h3, h4, h5, h6')
+
+      // 見出しのレベルに応じてタグを変換
+      Array.from(headings).forEach((heading, index) => {
+        const level = parseInt(heading.tagName.slice(1))
+        let newTag = ''
+        if (level === 1) {
+          newTag = 'h3'
+          // 見出し1にユニークなIDを付ける
+          const id = `heading_${index}`
+          heading.setAttribute('id', id)
+        } else if (level === 2) {
+          newTag = 'h4'
+        } else if (level === 3) {
+          newTag = 'h5'
+        } else {
+          newTag = 'h6'
+        }
+        const newHeading = doc.createElement(newTag)
+        newHeading.innerHTML = heading.innerHTML
+        newHeading.id = heading.id
+        heading.parentNode.replaceChild(newHeading, heading)
       })
+      // 目次（見出し1のみ）
+      const tocHeadings = Array.from(headings).map((heading, index) => {
+        const level = parseInt(heading.tagName.slice(1))
+        if (level === 1) {
+          const id = `heading_${index}`
+          heading.setAttribute('id', id)
+          return { id, text: heading.innerText }
+        }
+      }).filter(Boolean)
       this.tocHeadings = tocHeadings
 
-      // 見出しにIDを設定したHTMLを更新
-      this.blog.content = doc.body.innerHTML
+      this.formattedContent = doc.body.innerHTML
+    },
+    // スムーズスクロール
+    scrollTo(id) {
+      const element = document.getElementById(id)
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' })
+      }
     }
   }
 }
