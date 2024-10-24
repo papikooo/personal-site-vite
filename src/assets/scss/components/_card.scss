@@ -6,7 +6,7 @@
 
 .c-card__cont {
   max-width: var(--w-container);
-  margin: rem(50) auto;
+  margin: rem(65) auto rem(50);
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: 1fr;
@@ -21,7 +21,7 @@
 }
 
 // aタグを親要素いっぱいに広げるためdisplay:flex
-.c-card__cont-box {
+.c-card__item {
   display: flex;
   width: 250px;
   height: 300px;
@@ -59,7 +59,7 @@
   }
 }
 
-.c-card__cont-txt {
+.c-card__txt {
   padding: rem(10) rem(20);
   font-size: rem(14);
   line-height: 1.5em;
@@ -71,7 +71,11 @@
   }
 }
 
-.c-card__cont-tags {
+.c-card__tags {
+  display: block;
+}
+
+.c-card__tags {
   display: inline-block;
   margin: rem(5) rem(5) rem(5) 0;
   padding: rem(3) rem(10);

@@ -1,10 +1,11 @@
 <template>
-  <article v-for="blog in displayedBlogs" :key="blog.id" class="c-card__cont-box">
+  <article v-for="blog in displayedBlogs" :key="blog.id" class="c-card__item">
     <router-link :to="{ name: 'NoteDetail', params: { category: this.category, blogId: blog.id } }">
       <inline-svg :src="blog.eyecatch?.url" class="c-article__icon"/>
-      <div class="c-card__cont-txt">
+      <div class="c-card__txt">
         <h3>{{ blog.title }}</h3>
-        <span v-for="tag in blog.tags" :key="tag.id" class="c-card__cont-tags">{{ tag.name }}</span>
+        <div class="p-card__date">{{ formatDate(blog.publishedAt) }}</div>
+        <span v-for="tag in blog.tags" :key="tag.id" class="c-card__tags">{{ tag.name }}</span>
       </div>
     </router-link>
   </article>
@@ -65,7 +66,11 @@ export default {
       .catch((err) => {
         console.error('Error fetching posts:', err)
       })
-    }
+    },
+    formatDate(dateString) {
+			const date = new Date(dateString);
+			return `${date.getFullYear()}.${date.getMonth() + 1}.${date.getDate()}`;
+		}
   },
   computed: {
     displayedBlogs() {

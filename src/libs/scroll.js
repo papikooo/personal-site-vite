@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // スクロール量、高さ、コンテンツを取得
     const scroll = window.scrollY;
     const windowHeight = window.innerHeight;
-    const boxes = document.querySelectorAll('.c-card__cont-box');
+    const boxes = document.querySelectorAll('.c-card__item');
 
     boxes.forEach(function (box, index) {
       // boxまでの高さを取得
