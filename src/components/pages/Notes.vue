@@ -1,5 +1,5 @@
 <template>
-  <section :id="category" class="u-anime_fadein">
+  <section :id="category" :class="`l-${category}__inner`">
     <h2>{{ categoryName }}</h2>
     <div class="c-card__cont">
       <Note :key="category" :category="category" />

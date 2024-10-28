@@ -1,8 +1,9 @@
 <template>
   <div v-if="isDataLoaded">
-    <article class="p-article__cont u-anime_fadein">
+    <article class="p-article__cont">
       <inline-svg :src="blog.eyecatch?.url" class="c-article__icon"/>
       <h2 class="p-article__ttl">{{ blog.title }}</h2>
+      <span class="p-article__date">{{ formatDate(blog.publishedAt) }}</span>
       <div class="p-article__toc">
         <span>目次</span>
         <ul>
@@ -97,6 +98,11 @@ export default {
 
       this.formattedContent = doc.body.innerHTML
     },
+    // フォーマット（日付）
+    formatDate(dateString) {
+			const date = new Date(dateString);
+			return `${date.getFullYear()}年${date.getMonth() + 1}月${date.getDate()}日`;
+		},
     // スムーズスクロール
     scrollTo(id) {
       const element = document.getElementById(id)

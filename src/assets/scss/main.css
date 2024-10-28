@@ -509,7 +509,7 @@ button:active {
   height: 0;
 }
 
-.c-card__cont-box {
+.c-card__item {
   margin: 2.5rem 1.88rem;
   display: flex;
   width: 250px;
@@ -517,26 +517,26 @@ button:active {
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.35);
   text-align: left;
 }
-.c-card__cont-box:hover {
+.c-card__item:hover {
   box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.35);
   transition: all 1s;
 }
-.c-card__cont-box a {
+.c-card__item a {
   width: 100%;
 }
-.c-card__cont-box img {
+.c-card__item img {
   min-width: 100%;
   max-height: 47%;
   -o-object-fit: cover;
      object-fit: cover;
 }
 
-.c-card__cont-txt {
+.c-card__txt {
   padding: 0.63rem 1.25rem;
   font-size: 0.88rem;
   line-height: 1.5em;
 }
-.c-card__cont-txt h3 {
+.c-card__txt h3 {
   margin-bottom: 0.63rem;
   font-size: 1rem;
   font-weight: bold;

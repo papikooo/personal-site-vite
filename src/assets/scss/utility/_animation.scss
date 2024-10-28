@@ -1,17 +1,16 @@
-.u-anime_fadein {
-	animation: fadeInAnime 2.5s forwards;
-	opacity: 0;
-	}
-	
-	@keyframes fadeInAnime{
-		from {
-			opacity: 0;
-		}
-	
-		to {
-			opacity: 1;
-		}
-	}
+// .l-main__inner,
+// .u-anime_fadein {
+// 	animation: fadeInAnime 2.5s forwards;
+// 	opacity: 0;
+// 	}
+// 	@keyframes fadeInAnime{
+// 		from {
+// 			opacity: 0;
+// 		}
+// 		to {
+// 			opacity: 1;
+// 		}
+// 	}
 
 // ローディング実装する場合
 // .u-anime_loading {
