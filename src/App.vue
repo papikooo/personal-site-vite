@@ -5,10 +5,10 @@ import Footer from '@c/basics/Footer.vue'
 
 <template>
   <div class="l-container">
-    <header>
+    <header class="l-header">
       <Header title="Personal Site" />
     </header>
-    <main>
+    <main class="l-main">
       <div class="l-main__inner">
       <router-view />
       </div>
@@ -23,7 +23,7 @@ import Footer from '@c/basics/Footer.vue'
         </ul>
       </div>
     </main>
-    <footer>
+    <footer class="l-footer">
       <Footer footer_text="&copy;nm" />
     </footer>
   </div>
@@ -55,6 +55,7 @@ export default {
         console.error('Error fetching posts:', err)
       })
     },
+    // 日付のフォーマット
 		formatDate(dateString) {
 			const date = new Date(dateString);
 			return `${date.getFullYear()}.${date.getMonth() + 1}.${date.getDate()}`;

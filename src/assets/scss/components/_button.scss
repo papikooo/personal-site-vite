@@ -6,7 +6,7 @@
 
 
 
-button {
+.c-button {
   margin-top: rem(10);
   margin-bottom: rem(10);
   padding: rem(3) rem(30);
@@ -21,6 +21,7 @@ button {
   &:hover {
     border-bottom: solid rem(5) var(--color-main-b);
     background-color: var(--color-main);
+    color: var(--color-main-b);
     transition: all ease-out 0.3s;
   }
 }
