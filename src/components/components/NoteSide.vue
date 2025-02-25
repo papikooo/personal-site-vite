@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import { client } from '@/libs/microcms.js';
+import { fetchBlogs } from "@/libs/api.js";
 // import '@/libs/scroll.js';
 
 export default {
@@ -20,25 +20,15 @@ export default {
       blogs: []
     }
   },
-  mounted() {
-    // this.getPosts()
-    // // 初期ロード時にもスクロールイベントを発火させる
-    // window.dispatchEvent(new Event('scroll'));
-  },
   methods: {
-    // getPosts
-    getPosts() {
-      client.get({
-        endpoint: 'notes'
-      })
-      .then((res) => {
-        this.blogs = res.contents;
-        this.$nextTick(() => {
-          // DOMの更新後にスクロールイベントを手動でトリガー
-          window.dispatchEvent(new Event('scroll'));
-        });
-      })
-    }
+    async getPosts() {
+      try {
+        const response = await fetchBlogs(); // fetchBlogs() を使用
+        this.blogs = response;
+      } catch (error) {
+        console.error("ブログ取得エラー:", error);
+      }
+    },
   },
   // 表示数調整
   // Note.vueに表示するブログの数をpropsとして渡す
@@ -52,7 +42,10 @@ export default {
     displayedBlogs() {
       return this.limit ? this.blogs.slice(0, this.limit) : this.blogs;
     }
-  }
+  },
+  mounted() {
+    this.getPosts(); // コンポーネントがマウントされたらブログを取得
+  },
 }
 
 </script>

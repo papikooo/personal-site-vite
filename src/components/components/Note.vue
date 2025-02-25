@@ -1,6 +1,6 @@
 <template>
   <article v-for="blog in displayedBlogs" :key="blog.id" class="c-card__item">
-    <router-link :to="{ name: 'NoteDetail', params: { category: this.category, blogId: blog.id } }">
+    <router-link :to="{ name: 'NoteDetail', params: { category: category, blogId: blog.id } }">
       <inline-svg :src="blog.eyecatch?.url" class="c-article__icon"/>
       <div class="c-card__txt">
         <h3>{{ blog.title }}</h3>
@@ -12,23 +12,20 @@
 </template>
 
 <script>
-import { client } from '@/libs/microcms.js'
-import '@/libs/scroll.js'
-import InlineSvg from 'vue-inline-svg'
+import { fetchBlogs } from "@/libs/api.js";
+import '@/libs/scroll.js';
+import InlineSvg from 'vue-inline-svg';
 
 export default {
   name: 'Note',
   components: {
     InlineSvg
   },
-  // propsとして渡す
   props: {
-    // Note.vueに表示するブログの数
     limit: {
       type: Number,
       default: null
     },
-    // カテゴリ
     category: {
       type: String,
       required: false
@@ -37,45 +34,51 @@ export default {
   data() {
     return {
       blogs: []
-    }
+    };
   },
-  mounted() {
-    this.getPosts()
-    // 初期ロード時にもスクロールイベントを発火させる
-    window.dispatchEvent(new Event('scroll'));
+  async mounted() {
+    await this.getPosts();
+    window.dispatchEvent(new Event("scroll"));
   },
   methods: {
-    // getPosts
-    getPosts() {
-      const queries = { limit: this.limit }; // 表示数
-      if (this.category) {
-        queries.filters = `category[equals]${this.category}`; // カテゴリ
-      }
+    async getPosts() {
+      try {
+        const queries = {};
+        if (this.limit) {
+          queries.limit = this.limit;
+        }
+        if (this.category) {
+          queries.filters = `category[equals]${this.category}`;
+        }
 
-      client.get({
-        endpoint: 'notes',
-        queries
-      })
-      .then((res) => {
-        this.blogs = res.contents;
-        this.$nextTick(() => {
-          // DOMの更新後にスクロールイベントを手動でトリガー
-          window.dispatchEvent(new Event('scroll'));
-        });
-      })
-      .catch((err) => {
-        console.error('Error fetching posts:', err)
-      })
+        const res = await fetchBlogs(queries);
+        console.log("API Response:", res);
+        this.blogs = res.contents || [];
+
+        window.dispatchEvent(new Event("scroll"));
+      } catch (error) {
+        console.error("Error fetching posts:", error);
+      }
     },
     formatDate(dateString) {
-			const date = new Date(dateString);
-			return `${date.getFullYear()}.${date.getMonth() + 1}.${date.getDate()}`;
-		}
+      const date = new Date(dateString);
+      const year = date.getFullYear();
+      const month = String(date.getMonth() + 1).padStart(2, '0'); // 2桁表示
+      const day = String(date.getDate()).padStart(2, '0'); // 2桁表示
+      return `${year}.${month}.${day}`;
+    }
   },
   computed: {
     displayedBlogs() {
+      console.log("Current blogs:", this.blogs);
+
+      if (!Array.isArray(this.blogs)) {
+        console.error("Error: blogs is not an array", this.blogs);
+        return [];
+      }
+
       return this.limit ? this.blogs.slice(0, this.limit) : this.blogs;
     }
   }
-}
+};
 </script>

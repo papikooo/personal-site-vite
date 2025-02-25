@@ -1,8 +1,3 @@
-<script setup>
-import Header from '@c/basics/Header.vue'
-import Footer from '@c/basics/Footer.vue'
-</script>
-
 <template>
   <div class="l-container">
     <header class="l-header">
@@ -10,7 +5,7 @@ import Footer from '@c/basics/Footer.vue'
     </header>
     <main class="l-main">
       <div class="l-main__inner">
-      <router-view />
+        <router-view />
       </div>
       <div class="p-main__blognav">
         <ul class="p-main__bloglist">
@@ -29,45 +24,49 @@ import Footer from '@c/basics/Footer.vue'
   </div>
 </template>
 <script>
-import { client } from '@/libs/microcms.js'
+import { fetchBlogs } from "@/libs/api.js"
+import Header from '@c/basics/Header.vue'
+import Footer from '@c/basics/Footer.vue'
 
 export default {
-	data() {
+  components: {
+    Header,
+    Footer
+  },
+  data() {
     return {
       blogs: []
     }
   },
-	mounted() {
+  mounted() {
     this.getPosts()
   },
-	methods: {
-    // Note.vueのgetPostsを流用
-    getPosts() {
-      const queries = { limit: 100 }; // 全ブログ取得
-      client.get({
-        endpoint: 'notes',
-        queries
-      })
-      .then((res) => {
-        this.blogs = res.contents;
-      })
-      .catch((err) => {
+  methods: {
+    // 記事取得
+    async getPosts() {
+      try {
+        const res = await fetchBlogs({ limit: 100 }) // 全ブログ取得
+        this.blogs = res.contents
+        this.$nextTick(() => {
+          window.dispatchEvent(new Event('scroll')); // スクロールイベントを発火
+        });
+      } catch (err) {
         console.error('Error fetching posts:', err)
-      })
+      }
     },
     // 日付のフォーマット
-		formatDate(dateString) {
-			const date = new Date(dateString);
-			return `${date.getFullYear()}.${date.getMonth() + 1}.${date.getDate()}`;
-		}
+    formatDate(dateString) {
+      const date = new Date(dateString)
+      return `${date.getFullYear()}.${date.getMonth() + 1}.${date.getDate()}`
+    }
   },
-	computed: {
-    // サイドナビ：最新記事
+  computed: {
+  // 最新5件の記事（降順ソート）
     recentBlogs() {
-      // ブログを日付順に並び替え、最新5件のみを返す
-      return this.blogs
-        .sort((a, b) => new Date(b.date) - new Date(a.date))
+      const sortedBlogs = [...this.blogs]
+        .sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt))
         .slice(0, 5);
+      return sortedBlogs;
     }
   }
 }

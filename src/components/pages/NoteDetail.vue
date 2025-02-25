@@ -4,112 +4,112 @@
       <inline-svg :src="blog.eyecatch?.url" class="c-article__icon"/>
       <h2 class="p-article__ttl">{{ blog.title }}</h2>
       <span class="p-article__date">{{ formatDate(blog.publishedAt) }}</span>
-      <div class="p-article__toc">
+
+      <div class="p-article__toc" v-if="tocHeadings.length">
         <span>目次</span>
         <ul>
-          <li v-for="(heading, index) in tocHeadings" :key="index">
+          <li v-for="(heading, index) in tocHeadings" :key="heading.id">
             <a :href="'#' + heading.id" @click.prevent="scrollTo(heading.id)">{{ heading.text }}</a>
           </li>
         </ul>
       </div>
+
       <div v-html="formattedContent" class="p-article__inner"/>
     </article>
   </div>
-  <!-- ローディング実装する場合 -->
-  <!-- <div v-else class="u-anime_loading">
-    <div class="loading_cont">
-      <div class="bouncy"></div>
-    </div>
-  </div> -->
 </template>
 
 <script>
-import { client } from '@/libs/microcms.js'
-import InlineSvg from 'vue-inline-svg'
+import { fetchBlogs } from "@/libs/api.js";
+import InlineSvg from "vue-inline-svg";
 
 export default {
-  name: 'NoteDetail',
+  name: "NoteDetail",
   data() {
     return {
       blog: {},
-      formattedContent: '', //htmlフォーマット
-      tocHeadings: [], //目次用
-      isDataLoaded: false // データが読み込まれたかどうか
-    }
+      formattedContent: "",
+      tocHeadings: [],
+      isDataLoaded: false,
+    };
   },
   components: {
-    InlineSvg
+    InlineSvg,
   },
-  mounted() {
-    this.getPost()
+  async mounted() {
+    await this.getPost();
   },
   methods: {
     async getPost() {
       try {
-        const blogId = this.$route.params.blogId
-        const response = await client.get({
-          endpoint: 'notes',
-          contentId: blogId
-        })
-        this.blog = response
-        this.formatContent(response.content) // コンテンツをフォーマット
-        this.isDataLoaded = true // データ取得完了
+        const blogId = this.$route.params.blogId;
+        const response = await fetchBlogs({ contentId: blogId });
+
+        if (!response || !response.contents || response.contents.length === 0) {
+          throw new Error("ブログが見つかりません");
+        }
+
+        this.blog = response.contents[0]; // ✅ 最初のブログをセット
+        this.formatContent(this.blog.content);
+        this.isDataLoaded = true;
       } catch (error) {
-        console.error('エラーが発生しました', error)
+        console.error("エラーが発生しました", error);
       }
     },
-    // フォーマット（見出しを変換、目次抽出）
+
     formatContent(content) {
-      const parser = new DOMParser()
-      const doc = parser.parseFromString(content, 'text/html')
-      const headings = doc.querySelectorAll('h1, h2, h3, h4, h5, h6')
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(content, "text/html");
+      const headings = doc.querySelectorAll("h1, h2, h3, h4, h5, h6");
 
-      // 見出しのレベルに応じてタグを変換
       Array.from(headings).forEach((heading, index) => {
-        const level = parseInt(heading.tagName.slice(1))
-        let newTag = ''
+        const level = parseInt(heading.tagName.slice(1));
+        let newTag = "";
         if (level === 1) {
-          newTag = 'h3'
-          // 見出し1にユニークなIDを付ける
-          const id = `heading_${index}`
-          heading.setAttribute('id', id)
+          newTag = "h3";
+          const id = `heading_${this.blog.id}_${index}`;
+          heading.setAttribute("id", id);
         } else if (level === 2) {
-          newTag = 'h4'
+          newTag = "h4";
         } else if (level === 3) {
-          newTag = 'h5'
+          newTag = "h5";
         } else {
-          newTag = 'h6'
+          newTag = "h6";
         }
-        const newHeading = doc.createElement(newTag)
-        newHeading.innerHTML = heading.innerHTML
-        newHeading.id = heading.id
-        heading.parentNode.replaceChild(newHeading, heading)
-      })
-      // 目次（見出し1のみ）
-      const tocHeadings = Array.from(headings).map((heading, index) => {
-        const level = parseInt(heading.tagName.slice(1))
-        if (level === 1) {
-          const id = `heading_${index}`
-          heading.setAttribute('id', id)
-          return { id, text: heading.innerText }
-        }
-      }).filter(Boolean)
-      this.tocHeadings = tocHeadings
+        const newHeading = doc.createElement(newTag);
+        newHeading.innerHTML = heading.innerHTML;
+        newHeading.id = heading.id;
+        heading.parentNode.replaceChild(newHeading, heading);
+      });
 
-      this.formattedContent = doc.body.innerHTML
+      this.tocHeadings = Array.from(headings)
+        .map((heading, index) => {
+          if (heading.tagName.toLowerCase() === "h1") {
+            return {
+              id: `heading_${this.blog.id}_${index}`,
+              text: heading.innerText,
+            };
+          }
+        })
+        .filter(Boolean);
+
+      this.formattedContent = doc.body.innerHTML;
     },
-    // フォーマット（日付）
+
     formatDate(dateString) {
-			const date = new Date(dateString);
-			return `${date.getFullYear()}年${date.getMonth() + 1}月${date.getDate()}日`;
-		},
-    // スムーズスクロール
+      const date = new Date(dateString);
+      const year = date.getFullYear();
+      const month = String(date.getMonth() + 1).padStart(2, '0');
+      const day = String(date.getDate()).padStart(2, '0');
+      return `${year}.${month}.${day}`;
+    },
+
     scrollTo(id) {
-      const element = document.getElementById(id)
+      const element = document.getElementById(id);
       if (element) {
-        element.scrollIntoView({ behavior: 'smooth' })
+        element.scrollIntoView({ behavior: "smooth" });
       }
-    }
-  }
-}
+    },
+  },
+};
 </script>

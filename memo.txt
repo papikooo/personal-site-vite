@@ -1,0 +1,4 @@
+2025/02/25 install
+npm install express dotenv axios cors
+
+microcms-js-sdkをバックエンドで実行するよう設定
