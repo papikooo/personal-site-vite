@@ -1,24 +1,26 @@
-// card scroll
-document.addEventListener('DOMContentLoaded', function() {
-  window.addEventListener('scroll', function () {
-    // スクロール量、高さ、コンテンツを取得
-    const scroll = window.scrollY;
-    const windowHeight = window.innerHeight;
-    const boxes = document.querySelectorAll('.c-card__item');
+export function handleScroll() {
+  const boxes = document.querySelectorAll('.js-scroll');
 
-    boxes.forEach(function (box, index) {
-      // boxまでの高さを取得
-      const distanceToBox = box.getBoundingClientRect().top + window.scrollY;
-
-      // 下記条件が成り立つときだけboxにis-activeクラスを付与する
-      if (scroll + windowHeight > distanceToBox) {
+  const observer = new IntersectionObserver((entries, observer) => {
+    let allVisible = true;
+    entries.forEach((entry, index) => {
+      if (entry.isIntersecting) {
         setTimeout(function() {
-          box.classList.add('is-active');
-        }, index * 200); // 各ボックスに対して0.2秒ずつ遅延を追加
+          entry.target.classList.add('is-active');
+        }, index * 200); // 遅延を加えつつ、要素を表示
+      } else {
+        allVisible = false;
       }
     });
+    // すべてのボックスが表示されたら監視を停止
+    if (allVisible) {
+      observer.disconnect();
+    }
+  }, {
+    threshold: 0.5  // 要素が50%表示されたときにアクティブ化
   });
 
-  // ページロード時に一度スクロールイベントを発火
-  window.dispatchEvent(new Event('scroll'));
-});
+  boxes.forEach(box => {
+    observer.observe(box);
+  });
+}

@@ -39,7 +39,7 @@
       }
     },
     mounted() {
-      this.getPosts()
+      this.getPosts();
     },
     methods: {
       // 記事取得
@@ -47,9 +47,6 @@
         try {
           const res = await fetchBlogs({ limit: 100 }) // 全ブログ取得
           this.blogs = res.contents
-          this.$nextTick(() => {
-            window.dispatchEvent(new Event('scroll')); // スクロールイベントを発火
-          });
         } catch (err) {
           console.error('Error fetching posts:', err)
         }

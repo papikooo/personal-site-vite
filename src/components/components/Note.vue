@@ -1,5 +1,5 @@
 <template>
-  <article v-for="blog in displayedBlogs" :key="blog.id" class="c-card__item">
+  <article v-for="blog in displayedBlogs" :key="blog.id" class="c-card__item js-scroll">
     <router-link :to="{ name: 'NoteDetail', params: { category: category, blogId: blog.id } }">
       <inline-svg :src="blog.eyecatch?.url" class="c-article__icon"/>
       <div class="c-card__txt">
@@ -13,7 +13,7 @@
 
 <script>
 import { fetchBlogs } from "@/libs/api.js";
-import '@/libs/scroll.js';
+import {handleScroll} from '@/libs/scroll.js';
 import InlineSvg from 'vue-inline-svg';
 
 export default {
@@ -37,11 +37,20 @@ export default {
     };
   },
   async mounted() {
-    await this.getNotes();
-    window.dispatchEvent(new Event("scroll"));
+    await this.getPosts();
+    this.$nextTick(() => {
+      // スクロールイベントリスナーを追加
+      window.addEventListener('scroll', handleScroll);
+      // 初回スクロールチェックのためのスクロールイベントを発火
+      window.dispatchEvent(new Event('scroll'));
+    });
+  },
+  beforeUnmount() {
+    // コンポーネントが破棄される際にイベントリスナーを削除
+    window.removeEventListener('scroll', handleScroll);
   },
   methods: {
-    async getNotes() {
+    async getPosts() {
       try {
         const params = {};
         if (this.category) {
@@ -50,9 +59,6 @@ export default {
 
         const res = await fetchBlogs(params);
         this.blogs = res.contents || [];
-        this.isDataLoaded = true;
-
-        window.dispatchEvent(new Event("scroll"));
       } catch (error) {
         console.error("Error fetching posts:", error);
       }
