@@ -10,7 +10,7 @@ const routes = [
 	{ path: '/games', name: 'Games', component: Notes, props: { category: 'games' } },
 	{ path: '/plans', name: 'Plans', component: Notes, props: { category: 'plans' } },
 	// { path: '/:category', name: 'Notes', component: Notes, props: true },
-	{ path: '/:category/:blogId', name: 'NoteDetail', component: NoteDetail },
+	{ path: '/:category/:blogId', name: 'NoteDetail', component: NoteDetail, props: true },
 ]
 
 const router = createRouter({

@@ -14,7 +14,7 @@
         </ul>
       </div>
 
-      <div v-html="formattedContent" class="p-article__inner"/>
+      <div v-html="formattedContent" class="p-article__inner"></div>
     </article>
   </div>
 </template>
@@ -42,21 +42,19 @@ export default {
   methods: {
     async getPost() {
       try {
-        const blogId = this.$route.params.blogId;
-        const response = await fetchBlogs({ contentId: blogId });
-
-        if (!response || !response.contents || response.contents.length === 0) {
+        const blogId = this.$route.params.blogId; // router.jsにて設定したパラメータ:blogIdを取得
+        const res = await fetchBlogs({ contentId: blogId }); // blogIdと一致する記事を取得
+        if (!res || !res.id) {
           throw new Error("ブログが見つかりません");
         }
-
-        this.blog = response.contents[0]; // ✅ 最初のブログをセット
-        this.formatContent(this.blog.content);
-        this.isDataLoaded = true;
+        this.blog = res; // 取得した記事をセット
+        this.formatContent(this.blog.content); // フォーマット
+        this.isDataLoaded = true; // 処理が終わって true とする → 記事を表示
       } catch (error) {
         console.error("エラーが発生しました", error);
       }
     },
-
+    // フォーマット
     formatContent(content) {
       const parser = new DOMParser();
       const doc = parser.parseFromString(content, "text/html");
@@ -95,7 +93,7 @@ export default {
 
       this.formattedContent = doc.body.innerHTML;
     },
-
+    // 日付フォーマット
     formatDate(dateString) {
       const date = new Date(dateString);
       const year = date.getFullYear();
@@ -103,7 +101,7 @@ export default {
       const day = String(date.getDate()).padStart(2, '0');
       return `${year}.${month}.${day}`;
     },
-
+    // スクロール
     scrollTo(id) {
       const element = document.getElementById(id);
       if (element) {

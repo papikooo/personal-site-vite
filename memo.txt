@@ -2,3 +2,38 @@
 npm install express dotenv axios cors
 
 microcms-js-sdkをバックエンドで実行するよう設定
+
+2025/03/10
+server.jsを追加、api.jsを変更
+次　dotenvをインストールする
+
+server.jsに追加する↓
+
+import dotenv from 'dotenv';
+dotenv.config(); // .env ファイルを読み込む
+
+const client = createClient({
+  serviceDomain: process.env.MICROCMS_SERVICE_DOMAIN, // バックエンド用の環境変数
+  apiKey: process.env.MICROCMS_API_KEY, // バックエンド用の環境変数
+});
+
+まだserver.jsが上手く機能しない
+ChatGPTの履歴を確認する
+
+
+▼CORSエラーの解決策
+フロントエンド (http://localhost:5174) からバックエンド (http://localhost:3000) にリクエストを送る際に、CORS (Cross-Origin Resource Sharing) の制限がかかっているため発生
+
+1. cors パッケージをインストール
+npm install cors
+2. server.js に CORS を設定
+server.js に cors を追加し、フロントエンド (http://localhost:5174) からのリクエストを許可 するように設定
+
+2025/03/11
+サーバー設定できた！
+が、カテゴリわけができていない。
+ブログ取得はできている
+表示方法の問題？ api.jsの問題？
+
+2025/03/24
+↑ 修正済み

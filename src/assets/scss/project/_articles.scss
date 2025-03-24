@@ -12,16 +12,17 @@
 	& ul li {
 		position: relative;
 		text-align: left;
+		padding-left: 1.1em;
+	}
 
-		& ::before {
-			content: "";
-			position: absolute;
-			top: 1.2em;
-			left: 0;
-			width: rem(6);
-			height: rem(6);
-			background-color: var(--color-main);
-		}
+	& ul li::before {
+		content: "";
+		position: absolute;
+		top: 1.2em;
+		left: 0;
+		width: rem(6);
+		height: rem(6);
+		background-color: var(--color-main);
 	}
 } 
 
@@ -54,13 +55,11 @@
 		z-index: 2;
 	}
 	& ul li {
-		padding-left: 1.1em;
-		border-bottom: 1px dotted var(--color-main);
 		line-height: 2.8;
-
-		& ::before {
-			top: 1.25em;
-		}
+		border-bottom: 1px dotted var(--color-main);
+	}
+	& ul li::before {
+		top: 1.25em;
 	}
 	& ul li a {
 		color: #fff;
@@ -123,10 +122,6 @@
 		font-size: rem(17);
 	}
 
-	// & li {
-	// 	list-style-type: square;
-	// 	list-style-position: inside;
-	// }
 }
 
 .c-article__icon {

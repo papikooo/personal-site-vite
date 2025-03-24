@@ -9,8 +9,16 @@ export default defineConfig({
   // コンポーネント整理にあたり、相対パスでは参照できなくなる可能性もあるため
   // エイリアス（~）をsrc直下に設定
   plugins: [ vue() ],
+  server: {
+    proxy: {
+      '/api': {
+        target: 'http://localhost:3000',
+        changeOrigin: true,
+      },
+    },
+  },
   root: 'src',
-  envDir: '../', // .env.localファイルの場所（ルート（src）からの相対パス）
+  // envDir: '../', // .env.localファイルの場所（ルート（src）からの相対パス）
   resolve: {
     alias: {
       '@': './src', // ルートからの相対パス

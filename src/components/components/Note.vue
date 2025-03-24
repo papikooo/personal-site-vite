@@ -37,23 +37,20 @@ export default {
     };
   },
   async mounted() {
-    await this.getPosts();
+    await this.getNotes();
     window.dispatchEvent(new Event("scroll"));
   },
   methods: {
-    async getPosts() {
+    async getNotes() {
       try {
-        const queries = {};
-        if (this.limit) {
-          queries.limit = this.limit;
-        }
+        const params = {};
         if (this.category) {
-          queries.filters = `category[equals]${this.category}`;
+          params.category = this.category; // カテゴリがある場合のみセット
         }
 
-        const res = await fetchBlogs(queries);
-        console.log("API Response:", res);
+        const res = await fetchBlogs(params);
         this.blogs = res.contents || [];
+        this.isDataLoaded = true;
 
         window.dispatchEvent(new Event("scroll"));
       } catch (error) {
@@ -70,8 +67,6 @@ export default {
   },
   computed: {
     displayedBlogs() {
-      console.log("Current blogs:", this.blogs);
-
       if (!Array.isArray(this.blogs)) {
         console.error("Error: blogs is not an array", this.blogs);
         return [];
