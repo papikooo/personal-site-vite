@@ -1,18 +1,17 @@
 // api.js
 export const fetchBlogs = async (params) => {
   try {
-    let url = 'https://personal-site-versel.vercel.app/api/notes'; // 基本のURL
+    let url = 'https://personal-site-versel.vercel.app/api/notes';
 
-    // contentIdが指定されている場合は、特定の記事を取得するAPIに変更
+    // contentIdが指定されている場合
     if (params.contentId) {
-      url = `https://personal-site-versel.vercel.app/api/notes/${params.contentId}`; // サーバーの API 経由でデータを取得
+      url += `/${params.contentId}`;
     }
-    // category が指定されている場合、クエリパラメータを追加
+    // category が指定されている場合
     else if (params.category) {
       url += `?category=${params.category}`;
     }
 
-    console.log(url)
     const response = await fetch(url);
     if (!response.ok) {
       throw new Error('Failed to fetch blogs');
