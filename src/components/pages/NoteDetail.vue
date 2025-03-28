@@ -1,6 +1,6 @@
 <template>
   <div v-if="isDataLoaded">
-    <article class="p-article__cont">
+    <article class="p-article__cont u-anime_fadein">
       <inline-svg :src="blog.eyecatch?.url" class="c-article__icon"/>
       <h2 class="p-article__ttl">{{ blog.title }}</h2>
       <span class="p-article__date">{{ formatDate(blog.publishedAt) }}</span>

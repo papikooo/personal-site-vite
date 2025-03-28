@@ -10,20 +10,20 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: 1fr;
-  gap: rem(40) 0;
+  gap: rem(25);
 }
 
 .c-card__cont::after {
   content: "";
   display: block;
-  width: 250px;
+  width: 100%;
   height: 0;
 }
 
 // aタグを親要素いっぱいに広げるためdisplay:flex
 .c-card__item {
   display: flex;
-  width: 250px;
+  width: 100%;
   height: 300px;
   margin: 0 auto;
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.35);
