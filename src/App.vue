@@ -1,5 +1,5 @@
 <template>
-  <div class="l-container">
+  <div class="l-container l-container--back">
     <header class="l-header">
       <Header title="Personal Site" />
     </header>

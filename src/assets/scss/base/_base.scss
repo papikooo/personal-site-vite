@@ -71,7 +71,13 @@ h2 {
  * -------------------------------- */
 .l-container {
   display: grid;
-  grid-template-columns: 1fr 4fr;
+  grid-template-columns: 1fr 6fr;
   grid-template-rows: auto 1fr auto;
   height: 100vh;
+}
+
+.l-container--back {
+  background-color: #fff;
+  background-size: 20px 20px;
+  background-image:  repeating-linear-gradient(0deg, #efefef, #efefef 1px, #fff 1px, #fff);
 }
