@@ -43,17 +43,34 @@ h2 {
   line-height: 2;
   text-align: center;
 
-  &::after {
-    content: "";
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    display: block;
-    width: rem(50);
-    height: 5px;
-    border-radius: rem(5);
-    background-color: var(--color-main);
-  }
+  // &::after {
+  //   content: "";
+  //   position: absolute;
+  //   left: 50%;
+  //   transform: translateX(-50%);
+  //   display: block;
+  //   width: rem(50);
+  //   height: 5px;
+  //   border-radius: rem(5);
+  //   background-color: var(--color-main);
+  // }
+}
+
+.p-notes__title:first-letter {
+  font-size: 1.5em;
+  color: var(--color-main);
+}
+.p-works__title:first-letter {
+  font-size: 1.5em;
+  color: var(--color-accent--blue);
+}
+.p-games__title:first-letter {
+  font-size: 1.5em;
+  color: var(--color-accent--pink);
+}
+.p-plans__title:first-letter {
+  font-size: 1.5em;
+  color: var(--color-accent--purple);
 }
 
 @include sp {

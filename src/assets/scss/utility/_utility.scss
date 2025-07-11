@@ -48,15 +48,23 @@
 .u-svg-orange path {
 	fill: var(--color-accent) !important;
 }
-.u-svg-green path {
-	fill: #53cf78 !important;
-}
 .u-svg-blue path {
-	fill: #53a9cf !important;
-}
-.u-svg-purple path {
-	fill: #7853cf !important;
+	fill: var(--color-accent--blue) !important;
 }
 .u-svg-pink path {
-	fill: #cf53a9 !important;
+	fill: var(--color-accent--pink) !important;
+}
+.u-svg-purple path {
+	fill: var(--color-accent--purple) !important;
+}
+
+// align
+.u-align-left {
+  text-align: left;
+}
+.u-align-center {
+  text-align: center;
+}
+.u-align-right {
+  text-align: right;
 }

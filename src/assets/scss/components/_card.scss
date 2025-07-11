@@ -81,7 +81,10 @@
   display: inline-block;
   margin: rem(5) rem(5) rem(5) 0;
   padding: rem(3) rem(10);
+  border: solid rem(1) var(--color-main-b);
   border-radius: rem(5);
-  color: #fff;
-  background-color: var(--color-main);
+  // color: #fff;
+  // font-weight: 600;
+  // text-shadow: 0px 0px 0.5px #689500;
+  // background-color: var(--color-main-b);
 }

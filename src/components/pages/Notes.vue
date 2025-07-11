@@ -1,6 +1,6 @@
 <template>
   <section :id="category" :class="`l-${category}__inner`">
-    <h2>{{ categoryName }}</h2>
+    <h2 :class="`p-${category}__title`">{{ categoryName }}</h2>
     <div class="c-card__cont">
       <Note :key="category" :category="category" />
     </div>

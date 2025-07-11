@@ -1,10 +1,15 @@
 <script setup>
 
+// defineProps({
+//   button_text: String,
+// })
 defineProps({
-  button_text: String,
+  link_text: String,
+  link_url: String
 })
 
 </script>
 <template>
-  <button class="c-button">{{ button_text }}</button>
+  <router-link to={{ link_url }}>{{ link_text }}</router-link>
+  <!-- <button class="c-button">{{ button_text }}</button> -->
 </template>

@@ -58,10 +58,12 @@
   border-radius: rem(10);
   color: var(--color-main);
   background-color: #fff;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.35);
 }
 .p-main__blogdate {
   display: block;
   font-size: rem(12);
+  font-weight: 600;
 }
 .p-main__bloglink {
   padding: rem(7) rem(5);
